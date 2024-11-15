@@ -16,7 +16,7 @@ Qing Wang received a honoured B.E. degree from Zhejiang Wanli University, China,
 
 News
 ======
-This person is lazy and there is no news recently :)
+This guy is lazy and there is no news recently :)
 
 
 
