@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Qing Wang's homepage"
+title: "Welcome to Qing Wang's homepage"
 author_profile: true
 redirect_from: 
   - /about/
