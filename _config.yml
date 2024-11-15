@@ -7,12 +7,12 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "US Florida"
-title                    : "Qing Wang / homepage"
+locale                   : "Florida, USA"
+title                    : "Qing Wang"
 title_separator          : "-"
 name                     : &name "Qing Wang"
 description              : &description "personal description"
-url                      : https://wq2581.github.io/  # https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://wq2581.github.io/images/self.png  # https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
 
