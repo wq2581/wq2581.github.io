@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-[CV](https://scholar.google.com/citations?hl=zh-CN&authuser=1&user=i4CxYLwAAAAJ). 
+[CV](https://github.com/wq2581/wq2581.github.io/blob/master/files/CV.pdf). 
 
 
 
