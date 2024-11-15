@@ -12,16 +12,16 @@ title                    : "Qing Wang"
 title_separator          : "-"
 name                     : &name "Qing Wang"
 description              : &description "personal description"
-url                      : https://wq2581.github.io/images/self.png  # https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://wq2581.github.io/  # https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+repository               : "/images/"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "./images/self.png"
+  avatar           : "self.png"
   name             : "Qing Wang"
   pronouns         : # example: "she/her"  
   bio              : "Student in UF"
