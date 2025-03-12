@@ -20,7 +20,6 @@ News
 This guy is lazy and there is no news recently :)
 
 
-<a href="https://info.flagcounter.com/3gtg"><img src="https://s01.flagcounter.com/map/3gtg/size_m/txt_000000/border_CCCCCC/pageviews_0/viewers_0/flags_0/" alt="Flag Counter" border="0"></a>
 
 
 
