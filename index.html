@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汪卿的学术空间</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f9f9f9;
+            --bg-secondary: white;
+            --text-primary: #333;
+            --text-secondary: #555;
+            --text-muted: #7f8c8d;
+            --border-color: #e0e0e0;
+            --accent-color: #3498db;
+            --heading-color: #2c3e50;
+            --shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #888;
+            --border-color: #404040;
+            --accent-color: #5dade2;
+            --heading-color: #ecf0f1;
+            --shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .control-btn {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-primary);
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: var(--bg-secondary);
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--heading-color);
+        }
+
+        .title {
+            font-size: 1.2em;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .contact {
+            margin-top: 15px;
+        }
+
+        .contact a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--heading-color);
+        }
+
+        .profile {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border-color);
+        }
+
+        .bio {
+            flex-grow: 1;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--heading-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .publication {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .pub-title {
+            font-weight: bold;
+            color: var(--heading-color);
+        }
+
+        .pub-authors {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .pub-venue {
+            color: var(--text-muted);
+        }
+
+        .pub-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+
+        .education-item, .experience-item {
+            margin-bottom: 20px;
+        }
+
+        .item-title {
+            font-weight: bold;
+            color: var(--heading-color);
+        }
+
+        .item-subtitle {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .item-date {
+            color: var(--text-muted);
+        }
+
+        ul {
+            padding-left: 40px;
+        }
+
+        li {
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        /* 访客地图样式 */
+        .visitor-map {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: var(--bg-primary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .visitor-map h3 {
+            color: var(--heading-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .controls {
+                top: 10px;
+                right: 10px;
+            }
+
+            .control-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="control-btn" id="themeToggle">🌓 <span data-en="Dark Mode" data-zh="深色模式">深色模式</span></button>
+        <button class="control-btn" id="langToggle">🌐 <span data-en="English" data-zh="中文">English</span></button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 data-en="San Zhang" data-zh="张三">张三</h1>
+            <p class="title" data-en="PhD Student | Computer Science" data-zh="博士研究生 | 计算机科学">博士研究生 | 计算机科学</p>
+            <div class="contact">
+                <a href="mailto:zhangsan@university.edu">📧 Email</a>
+                <a href="https://scholar.google.com" target="_blank">🎓 Google Scholar</a>
+                <a href="https://github.com/yourusername" target="_blank">💻 GitHub</a>
+                <a href="https://twitter.com/yourusername" target="_blank">🐦 Twitter</a>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html" data-en="Home" data-zh="首页">首页</a>
+            <a href="resources.html" data-en="Resources" data-zh="资源">资源</a>
+            <a href="#publications" data-en="Publications" data-zh="论文">论文</a>
+            <a href="#contact" data-en="Contact" data-zh="联系">联系</a>
+        </nav>
+
+        <section class="profile">
+            <div class="profile-photo">
+                <img src="https://via.placeholder.com/180" alt="Profile Photo">
+            </div>
+            <div class="bio">
+                <h2 data-en="About Me" data-zh="关于我">关于我</h2>
+                <p data-en="I am a PhD student in Computer Science at XYZ University, advised by Prof. ABC. My research interests include machine learning, natural language processing, and computer vision. Currently, I am focusing on the application of deep learning in XXX field." 
+                   data-zh="我是某某大学计算机科学系的博士研究生，导师是XXX教授。我的研究兴趣包括机器学习、自然语言处理和计算机视觉。目前我专注于深度学习在XXX领域的应用。">
+                   我是某某大学计算机科学系的博士研究生，导师是XXX教授。我的研究兴趣包括机器学习、自然语言处理和计算机视觉。目前我专注于深度学习在XXX领域的应用。
+                </p>
+                <p style="margin-top: 10px;" 
+                   data-en="Before joining XYZ University, I received my Bachelor's degree in Computer Science from ABC University. My long-term goal is to solve real-world problems through innovative AI technologies and contribute to both academia and industry."
+                   data-zh="在加入某某大学之前，我在XXX大学获得了计算机科学学士学位。我的长期目标是通过创新的AI技术解决实际问题，为学术界和工业界做出贡献。">
+                   在加入某某大学之前，我在XXX大学获得了计算机科学学士学位。我的长期目标是通过创新的AI技术解决实际问题，为学术界和工业界做出贡献。
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-en="Research Interests" data-zh="研究兴趣">研究兴趣</h2>
+            <ul>
+                <li data-en="Machine Learning & Deep Learning" data-zh="机器学习与深度学习">机器学习与深度学习</li>
+                <li data-en="Natural Language Processing" data-zh="自然语言处理">自然语言处理</li>
+                <li data-en="Computer Vision" data-zh="计算机视觉">计算机视觉</li>
+                <li data-en="Multi-modal Learning" data-zh="多模态学习">多模态学习</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 data-en="News" data-zh="新闻动态">新闻动态</h2>
+            <ul>
+                <li><strong>2024.12</strong> - <span data-en="Paper accepted at NeurIPS 2024" data-zh="论文被 NeurIPS 2024 接收">论文被 NeurIPS 2024 接收</span></li>
+                <li><strong>2024.09</strong> - <span data-en="Started as Research Assistant at XYZ Lab" data-zh="开始在某某实验室担任研究助理">开始在某某实验室担任研究助理</span></li>
+                <li><strong>2024.06</strong> - <span data-en="Received Outstanding Student Scholarship" data-zh="获得优秀学生奖学金">获得优秀学生奖学金</span></li>
+            </ul>
+        </section>
+
+        <section id="publications">
+            <h2 data-en="Publications" data-zh="发表论文">发表论文</h2>
+            
+            <div class="publication">
+                <div class="pub-title">Deep Learning Approaches for Natural Language Understanding</div>
+                <div class="pub-authors">San Zhang, Si Li, Wu Wang</div>
+                <div class="pub-venue">NeurIPS 2024</div>
+                <div class="pub-links">
+                    <a href="#">[PDF]</a>
+                    <a href="#">[Code]</a>
+                    <a href="#">[Poster]</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Multi-Modal Learning for Computer Vision Tasks</div>
+                <div class="pub-authors">San Zhang, Liu Zhao</div>
+                <div class="pub-venue">CVPR 2024</div>
+                <div class="pub-links">
+                    <a href="#">[PDF]</a>
+                    <a href="#">[Code]</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">A Survey on Transfer Learning in Deep Neural Networks</div>
+                <div class="pub-authors">San Zhang, Si Li, Wu Wang, Liu Zhao</div>
+                <div class="pub-venue">arXiv 2023</div>
+                <div class="pub-links">
+                    <a href="#">[PDF]</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-en="Education" data-zh="教育背景">教育背景</h2>
+            
+            <div class="education-item">
+                <div class="item-title" data-en="XYZ University" data-zh="某某大学">某某大学</div>
+                <div class="item-subtitle" data-en="Ph.D. in Computer Science" data-zh="计算机科学博士">计算机科学博士</div>
+                <div class="item-date" data-en="2022 - Present" data-zh="2022 - 至今">2022 - 至今</div>
+            </div>
+
+            <div class="education-item">
+                <div class="item-title" data-en="ABC University" data-zh="某某大学">某某大学</div>
+                <div class="item-subtitle" data-en="B.S. in Computer Science" data-zh="计算机科学学士">计算机科学学士</div>
+                <div class="item-date">2018 - 2022</div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-en="Experience" data-zh="工作经历">工作经历</h2>
+            
+            <div class="experience-item">
+                <div class="item-title" data-en="Research Intern - XYZ Tech Company" data-zh="研究实习生 - 某某科技公司">研究实习生 - 某某科技公司</div>
+                <div class="item-subtitle" data-en="AI Research Department" data-zh="AI研究部门">AI研究部门</div>
+                <div class="item-date" data-en="Summer 2023" data-zh="2023年夏季">2023年夏季</div>
+                <p style="margin-top: 5px; color: var(--text-secondary);" 
+                   data-en="Working on optimization and application of large language models"
+                   data-zh="从事大语言模型的优化和应用研究">从事大语言模型的优化和应用研究</p>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-title" data-en="Teaching Assistant - XYZ University" data-zh="教学助理 - 某某大学">教学助理 - 某某大学</div>
+                <div class="item-subtitle" data-en="Introduction to Machine Learning" data-zh="机器学习导论课程">机器学习导论课程</div>
+                <div class="item-date" data-en="Spring 2023" data-zh="2023年春季">2023年春季</div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-en="Honors & Awards" data-zh="荣誉奖项">荣誉奖项</h2>
+            <ul>
+                <li data-en="Outstanding Student Scholarship, XYZ University, 2024" data-zh="优秀学生奖学金，某某大学，2024">优秀学生奖学金，某某大学，2024</li>
+                <li data-en="National Scholarship, 2021" data-zh="国家奖学金，2021">国家奖学金，2021</li>
+                <li data-en="Outstanding Thesis Award, 2022" data-zh="优秀毕业论文，2022">优秀毕业论文，2022</li>
+            </ul>
+        </section>
+
+        <!-- 访客地图 -->
+        <section class="visitor-map">
+            <h3 data-en="Visitor Map" data-zh="访客地图">访客地图</h3>
+            <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=9UnRG9FpISx2vMML9u20qkiT24zrXcti3zeD1uyHIfU&cl=ffffff&w=a"></script>
+        </section>
+
+        <footer id="contact">
+            <p data-en="© 2024 San Zhang | Last Updated: December 2024" data-zh="© 2024 张三 | 最后更新: 2024年12月">© 2024 张三 | 最后更新: 2024年12月</p>
+            <p style="margin-top: 5px; font-size: 0.85em;" data-en="Hosted on GitHub Pages" data-zh="基于 GitHub Pages 托管">基于 GitHub Pages 托管</p>
+        </footer>
+    </div>
+
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // 读取保存的主题
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // 语言切换
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = localStorage.getItem('lang') || 'zh';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            
+            document.querySelectorAll('[data-en][data-zh]').forEach(el => {
+                if (lang === 'en') {
+                    el.textContent = el.getAttribute('data-en');
+                } else {
+                    el.textContent = el.getAttribute('data-zh');
+                }
+            });
+
+            // 更新 HTML lang 属性
+            document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+        }
+
+        // 初始化语言
+        setLanguage(currentLang);
+
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'zh' ? 'en' : 'zh';
+            setLanguage(newLang);
+        });
+    </script>
+</body>
+</html>
