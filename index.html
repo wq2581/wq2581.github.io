@@ -1,322 +1,259 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QW space</title>
+    <title>Qing Wang | Biomedical Informatics</title>
+    <meta name="description" content="Qing Wang — Ph.D. student in Biomedical Informatics at the University of Florida. Research on AI4Science, biomedical foundation models, and large language models.">
+    <link rel="preconnect" href="https://img.shields.io">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-primary: #f9f9f9;
-            --bg-secondary: white;
-            --text-primary: #333;
-            --text-secondary: #555;
-            --text-muted: #7f8c8d;
-            --border-color: #e0e0e0;
-            --accent-color: #3498db;
-            --heading-color: #2c3e50;
-            --shadow: 0 0 10px rgba(0,0,0,0.1);
+            --bg: #f4f5f7;
+            --surface: #ffffff;
+            --text: #1f2937;
+            --text-soft: #4b5563;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --accent: #2563eb;
+            --accent-soft: #eff4ff;
+            --heading: #111827;
+            --rule: #1f2937;
+            --shadow: 0 1px 3px rgba(16,24,40,.06), 0 1px 2px rgba(16,24,40,.04);
+            --shadow-lg: 0 10px 25px rgba(16,24,40,.08);
         }
 
         [data-theme="dark"] {
-            --bg-primary: #1a1a1a;
-            --bg-secondary: #2d2d2d;
-            --text-primary: #e0e0e0;
-            --text-secondary: #b0b0b0;
-            --text-muted: #888;
-            --border-color: #404040;
-            --accent-color: #5dade2;
-            --heading-color: #ecf0f1;
-            --shadow: 0 0 10px rgba(0,0,0,0.5);
+            --bg: #0f172a;
+            --surface: #161e2e;
+            --text: #e5e7eb;
+            --text-soft: #cbd5e1;
+            --muted: #94a3b8;
+            --border: #2a3650;
+            --accent: #60a5fa;
+            --accent-soft: #1c2740;
+            --heading: #f1f5f9;
+            --rule: #cbd5e1;
+            --shadow: 0 1px 3px rgba(0,0,0,.4);
+            --shadow-lg: 0 12px 30px rgba(0,0,0,.5);
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-primary);
-            transition: background-color 0.3s, color 0.3s;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",
+                "Microsoft YaHei", sans-serif;
+            line-height: 1.65;
+            color: var(--text);
+            background: var(--bg);
+            transition: background .3s, color .3s;
+            font-size: 16px;
         }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
         .controls {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 1000;
+            position: fixed; top: 16px; right: 16px;
+            display: flex; gap: 8px; z-index: 1000;
         }
-
         .control-btn {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            color: var(--text-primary);
-            transition: all 0.3s;
-            box-shadow: var(--shadow);
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 7px 12px; border-radius: 999px; cursor: pointer;
+            font-size: 13px; color: var(--text); box-shadow: var(--shadow);
+            transition: all .2s;
         }
-
-        .control-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+        .control-btn:hover { border-color: var(--accent); color: var(--accent); }
 
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: var(--bg-secondary);
-            box-shadow: var(--shadow);
-            transition: background-color 0.3s;
+            max-width: 860px; margin: 0 auto; padding: 48px 24px 64px;
+            background: var(--surface); box-shadow: var(--shadow);
+            transition: background .3s;
         }
 
-        header {
-            text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 2px solid var(--border-color);
-            margin-bottom: 40px;
-        }
-
+        /* ---------- Header ---------- */
+        header { text-align: center; padding-bottom: 28px; }
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: var(--heading-color);
+            font-size: 2.4em; font-weight: 700; letter-spacing: -.5px;
+            color: var(--heading); margin-bottom: 8px;
         }
+        .title { font-size: 1.05em; color: var(--text-soft); max-width: 620px; margin: 0 auto 6px; }
+        .affil { font-size: .95em; color: var(--muted); margin-bottom: 14px; }
+        .contact-line { font-size: .92em; color: var(--muted); margin-bottom: 14px; }
+        .contact-line a { color: var(--accent); }
 
-        .title {
-            font-size: 1.2em;
-            color: var(--text-muted);
-            margin-bottom: 15px;
+        .social { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 18px; }
+        .social a {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 12px; border: 1px solid var(--border); border-radius: 999px;
+            font-size: .85em; color: var(--text-soft); background: var(--surface);
+            transition: all .2s;
         }
+        .social a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; transform: translateY(-1px); }
 
-        .contact {
-            margin-top: 15px;
+        .metrics { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .badge {
+            display: inline-flex; overflow: hidden; border-radius: 6px;
+            font-size: .8em; font-weight: 600; box-shadow: var(--shadow);
         }
+        .badge:hover { text-decoration: none; transform: translateY(-1px); }
+        .badge .badge-k { background: #334155; color: #fff; padding: 4px 9px; }
+        .badge .badge-v { color: #fff; padding: 4px 9px; font-variant-numeric: tabular-nums; }
+        .badge.cite .badge-v { background: #2563eb; }
+        .badge.idx  .badge-v { background: #0d9488; }
+        .metrics-note { font-size: .75em; color: var(--muted); margin-top: 8px; }
 
-        .contact a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .contact a:hover {
-            text-decoration: underline;
-        }
-
+        /* ---------- Nav ---------- */
         nav {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 900;
+            text-align: center; padding: 12px 0; margin: 8px 0 36px;
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            background: var(--surface);
         }
-
         nav a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.1em;
-            transition: color 0.3s;
+            color: var(--text-soft); margin: 0 14px; font-size: 1em; font-weight: 500;
+            padding-bottom: 2px;
         }
+        nav a:hover { color: var(--accent); text-decoration: none; }
+        nav a.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
 
-        nav a:hover {
-            color: var(--heading-color);
-        }
-
-        .profile {
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .profile-photo {
-            flex-shrink: 0;
-        }
-
-        .profile-photo img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--border-color);
-        }
-
-        .bio {
-            flex-grow: 1;
-        }
-
-        section {
-            margin-bottom: 40px;
-        }
-
+        /* ---------- Sections ---------- */
+        section { margin-bottom: 42px; }
         h2 {
-            font-size: 1.8em;
-            color: var(--heading-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
+            font-size: 1.45em; font-weight: 700; color: var(--heading);
+            margin-bottom: 18px; padding-bottom: 8px;
+            border-bottom: 2px solid var(--rule); display: inline-block;
         }
 
-        .publication {
-            margin-bottom: 20px;
-            padding-left: 20px;
+        .profile { display: flex; align-items: flex-start; gap: 28px; }
+        .profile-photo img {
+            width: 168px; height: 168px; border-radius: 12px; object-fit: cover;
+            border: 1px solid var(--border); box-shadow: var(--shadow);
+        }
+        .bio { flex: 1; }
+        .bio p { margin-bottom: 10px; color: var(--text-soft); }
+        .bio h2 { margin-top: 0; }
+
+        .inline-link { color: var(--accent); border-bottom: 1px dotted var(--accent); }
+        .inline-link:hover { text-decoration: none; opacity: .8; }
+
+        ul.clean { list-style: none; }
+        ul.clean li { position: relative; padding-left: 20px; margin-bottom: 9px; color: var(--text-soft); }
+        ul.clean li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
+
+        /* News */
+        .news li { color: var(--text-soft); }
+        .news .date {
+            display: inline-block; min-width: 74px; font-variant-numeric: tabular-nums;
+            font-weight: 600; color: var(--accent); margin-right: 6px;
         }
 
-        .pub-title {
-            font-weight: bold;
-            color: var(--heading-color);
+        /* ---------- Publications ---------- */
+        .pub {
+            display: flex; gap: 18px; padding: 16px; margin-bottom: 16px;
+            border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
+            transition: all .2s;
         }
-
-        .pub-authors {
-            color: var(--text-secondary);
-            font-style: italic;
+        .pub:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: var(--accent); }
+        .pub-cover { flex-shrink: 0; }
+        .pub-cover img {
+            width: 124px; height: 162px; object-fit: cover; object-position: top;
+            border: 1px solid var(--border); border-radius: 6px; background: #fff;
         }
-
-        .pub-venue {
-            color: var(--text-muted);
+        .pub-body { flex: 1; min-width: 0; }
+        .pub-tag {
+            display: inline-block; font-size: .7em; font-weight: 700; letter-spacing: .4px;
+            text-transform: uppercase; color: var(--accent); background: var(--accent-soft);
+            padding: 2px 8px; border-radius: 4px; margin-bottom: 6px;
         }
-
-        .pub-links {
-            margin-top: 5px;
-        }
-
+        .pub-title { font-weight: 600; color: var(--heading); font-size: 1.05em; line-height: 1.4; }
+        .pub-authors { color: var(--text-soft); font-size: .9em; margin: 4px 0; }
+        .pub-authors strong { color: var(--text); }
+        .pub-venue { color: var(--muted); font-size: .9em; font-style: italic; }
+        .pub-links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
         .pub-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin-right: 10px;
+            font-size: .82em; font-weight: 600; padding: 3px 10px;
+            border: 1px solid var(--border); border-radius: 6px; color: var(--text-soft);
+            transition: all .2s;
         }
+        .pub-links a:hover { background: var(--accent); color: #fff; border-color: var(--accent); text-decoration: none; }
+        .see-all { font-weight: 600; }
 
-        .pub-links a:hover {
-            text-decoration: underline;
-        }
-
-        .education-item, .experience-item {
-            margin-bottom: 25px;
-            padding-left: 15px;
-            border-left: 3px solid var(--accent-color);
-        }
-
-        .item-title {
-            font-weight: bold;
-            font-size: 1.1em;
-            color: var(--heading-color);
-        }
-
-        .item-subtitle {
-            color: var(--text-secondary);
-            margin-top: 3px;
-        }
-
-        .item-date {
-            color: var(--text-muted);
-            font-style: italic;
-            margin-top: 3px;
-        }
-
-        ul {
-            list-style-position: inside;
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
+        /* ---------- Timeline items ---------- */
+        .item { margin-bottom: 18px; padding-left: 16px; border-left: 2px solid var(--border); }
+        .item:hover { border-left-color: var(--accent); }
+        .item-title { font-weight: 600; color: var(--heading); }
+        .item-sub { color: var(--text-soft); font-size: .94em; }
+        .item-date { color: var(--muted); font-size: .85em; }
+        .item-note { color: var(--text-soft); font-size: .92em; margin-top: 3px; }
 
         footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px solid var(--border-color);
-            color: var(--text-muted);
+            text-align: center; margin-top: 48px; padding-top: 24px;
+            border-top: 1px solid var(--border); color: var(--muted); font-size: .85em;
         }
+        .visitor-map { margin-top: 36px; text-align: center; }
+        .visitor-map h3 { font-size: 1em; color: var(--muted); font-weight: 600; margin-bottom: 14px; }
 
-        .visitor-map {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .visitor-map h3 {
-            margin-bottom: 20px;
-            color: var(--heading-color);
-        }
-
-        /* 新增：内联超链接样式 */
-        .inline-link {
-            color: var(--accent-color);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--accent-color);
-            transition: all 0.3s;
-        }
-
-        .inline-link:hover {
-            color: var(--heading-color);
-            border-bottom-color: var(--heading-color);
-            text-decoration: none;
-        }
-
-        /* 新增：外部链接图标 */
-        .inline-link.external::after {
-            content: " ↗";
-            font-size: 0.8em;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            .profile {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .controls {
-                position: static;
-                justify-content: center;
-                margin-bottom: 20px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            h2 {
-                font-size: 1.5em;
-            }
+        @media (max-width: 720px) {
+            .container { padding: 32px 18px 48px; }
+            h1 { font-size: 2em; }
+            .profile { flex-direction: column; align-items: center; text-align: center; }
+            .controls { position: static; justify-content: center; margin-bottom: 18px; }
+            .pub { flex-direction: column; }
+            .pub-cover { align-self: center; }
+            .news .date { display: block; }
         }
     </style>
 </head>
 <body>
     <div class="controls">
-        <button id="themeToggle" class="control-btn">🌓 Theme/主题</button>
-        <button id="langToggle" class="control-btn">🌐 EN/中</button>
+        <button id="themeToggle" class="control-btn">🌓 Theme</button>
+        <button id="langToggle" class="control-btn">🌐 中/EN</button>
     </div>
 
     <div class="container">
         <header>
-            <h1 data-en="Qing Wang" data-zh="汪卿">汪卿</h1>
-            <p class="title" data-en="PhD Student in Biomedical Informatics | Department of Health Outcomes and Biomedical Informatics, College of Medicine, University of Florida" data-zh="生物医学信息学博士研究生 | 佛罗里达大学医学院健康产品与生物医学信息学系">生物医学信息学博士研究生 | 佛罗里达大学医学院健康产品与生物医学信息学系</p>
-            <p class="title">
-                📧 <span data-en="Email" data-zh="邮箱">邮箱</span>: wang.qing@ufl.edu | 
-                ☎️ <span data-en="Cell" data-zh="电话">电话</span>: (+1) 352-256-3237
+            <h1 data-en="Qing Wang" data-zh="汪卿">Qing Wang</h1>
+            <p class="title"
+               data-en="Ph.D. Student in Biomedical Informatics"
+               data-zh="生物医学信息学博士研究生">Ph.D. Student in Biomedical Informatics</p>
+            <p class="affil"
+               data-en="Department of Health Outcomes &amp; Biomedical Informatics, College of Medicine, University of Florida"
+               data-zh="佛罗里达大学医学院 健康产出与生物医学信息学系">Department of Health Outcomes &amp; Biomedical Informatics, College of Medicine, University of Florida</p>
+            <p class="contact-line">
+                📧 <a href="mailto:wang.qing@ufl.edu">wang.qing@ufl.edu</a> &nbsp;·&nbsp;
+                ☎️ (+1) 352-256-3237
             </p>
-            <div class="contact">
-                <a href="https://scholar.google.com/citations?authuser=1&user=AJXeD2wAAAAJ" target="_blank">🎓 Google Scholar</a>
-                <a href="https://github.com/wq2581?tab=repositories" target="_blank">💻 GitHub</a>
-                <a href="https://orcid.org/0000-0003-3511-4107" target="_blank">📖 ORCID</a>
-                <a href="https://www.linkedin.com/in/qing-wang-82058b337/" target="_blank">🔗 LinkedIn</a>
-                <a href="https://www.researchgate.net/profile/Qing-Wang-317" target="_blank">🚪 ResearchGate</a>
+
+            <div class="social">
+                <a href="https://scholar.google.com/citations?user=AJXeD2wAAAAJ" target="_blank" rel="noopener">🎓 Google Scholar</a>
+                <a href="https://github.com/wq2581" target="_blank" rel="noopener">💻 GitHub</a>
+                <a href="https://orcid.org/0000-0003-3511-4107" target="_blank" rel="noopener">📖 ORCID</a>
+                <a href="https://www.linkedin.com/in/qing-wang-82058b337/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+                <a href="https://www.researchgate.net/profile/Qing-Wang-317" target="_blank" rel="noopener">🚪 ResearchGate</a>
+                <a href="files/CV.pdf" target="_blank" rel="noopener">📄 CV</a>
             </div>
+
+            <div class="metrics" id="scholarMetrics">
+                <a class="badge cite" href="https://scholar.google.com/citations?user=AJXeD2wAAAAJ" target="_blank" rel="noopener" title="Google Scholar citations">
+                    <span class="badge-k">Citations</span><span class="badge-v" data-metric="citedby">206</span>
+                </a>
+                <a class="badge idx" href="https://scholar.google.com/citations?user=AJXeD2wAAAAJ" target="_blank" rel="noopener" title="Google Scholar h-index">
+                    <span class="badge-k">h-index</span><span class="badge-v" data-metric="hindex">8</span>
+                </a>
+                <a class="badge idx" href="https://scholar.google.com/citations?user=AJXeD2wAAAAJ" target="_blank" rel="noopener" title="Google Scholar i10-index">
+                    <span class="badge-k">i10-index</span><span class="badge-v" data-metric="i10index">7</span>
+                </a>
+            </div>
+            <p class="metrics-note" data-en="Live from Google Scholar · updated daily" data-zh="数据来自 Google Scholar · 每日自动更新">Live from Google Scholar · updated daily</p>
         </header>
 
         <nav>
-            <a href="index.html" data-en="Home" data-zh="首页">首页</a>
-            <a href="resources.html" data-en="Resources" data-zh="资源">资源</a>
+            <a href="index.html" class="active" data-en="Home" data-zh="首页">Home</a>
+            <a href="publications.html" data-en="Publications" data-zh="论文">Publications</a>
+            <a href="resources.html" data-en="Resources" data-zh="资源">Resources</a>
         </nav>
 
         <section class="profile">
@@ -324,212 +261,231 @@
                 <img src="./photos/self2.jpg" alt="Qing Wang">
             </div>
             <div class="bio">
-                <h2 data-en="About Me" data-zh="关于我">关于我</h2>
-                <p class="lang-en" style="display: none;">
-                   I am a PhD student in BMI at UF, advised by Prof. <a href="https://scholar.google.com/citations?user=wIYviKIAAAAJ&hl=zh-CN" class="inline-link">Qianqian Song</a>. My research interests include AI and its applications in biomedical field.
-                </p>
-                <p class="lang-zh">
-                   我是佛罗里达大学生物医学信息学系的博士生，导师是<a href="https://scholar.google.com/citations?user=wIYviKIAAAAJ&hl=zh-CN" class="inline-link">宋乾乾</a>教授。我的研究兴趣包括人工智能及其在生物医学领域的应用。
-                </p>
-                <p class="lang-en" style="margin-top: 10px; display: none;">
-                   Before joining the University of Florida, I received my bachelor's degree in Internet of Things Engineering from Zhejiang Wanli University in June 2021, where my thesis advisor was Professor <a href="https://scholar.google.com/citations?user=i4CxYLwAAAAJ&hl=zh-CN&oi=ao" class="inline-link">Jiong Shi</a>. I also obtained a master's degree in Computer Science from Zhejiang Normal University in June 2024, under the supervision of Professor <a href="https://scholar.google.com/citations?user=KO3MIkQAAAAJ&hl=zh-CN" class="inline-link">Jia Zhu</a>. During this time, as a member of the Zhejiang Key Laboratory of Intelligent Education Technology and Application team, I also received guidance from Professor <a href="https://scholar.google.com/citations?user=C3TSoowAAAAJ&hl=zh-CN" class="inline-link">Changqin Huang</a> and Professor <a href="https://scholar.google.com/citations?user=Z7yEoOQAAAAJ&hl=zh-CN" class="inline-link">Ming Li</a>. In the summer of 2023, I visited Professor <a href="https://scholar.google.com/citations?user=GAi23ssAAAAJ&hl=zh-CN&oi=ao" class="inline-link">Daniel E. Acuna</a>'s lab in the Computer Science Department at CU Boulder.
-                </p>
-                <p class="lang-zh" style="margin-top: 10px;">
-                   在加入佛罗里达大学之前，我在浙江万里学院获得物联网工程学士学位，导师是<a href="https://scholar.google.com/citations?user=i4CxYLwAAAAJ&hl=zh-CN&oi=ao" class="inline-link">施炯</a>教授。之后在浙江师范大学获得计算机科学硕士学位，导师是<a href="https://scholar.google.com/citations?user=KO3MIkQAAAAJ&hl=zh-CN" class="inline-link">朱佳</a>教授。在此期间，作为浙江省智能教育技术与应用重点实验室成员，我还受到<a href="https://scholar.google.com/citations?user=C3TSoowAAAAJ&hl=zh-CN" class="inline-link">黄昌勤</a>教授和<a href="https://scholar.google.com/citations?user=Z7yEoOQAAAAJ&hl=zh-CN" class="inline-link">李明</a>教授的指导。2023年夏天，我访问了科罗拉多大学博尔德分校计算机系<a href="https://scholar.google.com/citations?user=GAi23ssAAAAJ&hl=zh-CN&oi=ao" class="inline-link">Daniel E. Acuna</a>教授的实验室。
-                </p>
-                <p style="margin-top: 10px;" 
-                   data-en="Since 2022, my research has resulted in 17 papers including 7 first or co-first author publications in leading international journals such as Nature Communications, Advanced Science, Briefings in Bioinformatics, and Bioinformatics. These works have collectively received over 129 citations (h-index: 6, i10-index: 5). I also be awarded 1 CHINA Patent. I have served as a peer reviewer for over 18 international journals and conferences, completing more than 40 peer-review assignments to date."
-                   data-zh="自2022年以来，我的研究成果已发表17篇论文，其中包括7篇以第一作者或共同第一作者身份发表在《Nature Communications》、《Advanced Science》、《Briefings in Bioinformatics》和《Bioinformatics》等国际顶尖期刊上的文章。这些论文累计被引用超过170次，h指数为7，i10指数为5。我拥有一项中国专利。我曾担任30个以上国际期刊和会议的同行评审员，迄今已完成超过50次同行评审工作。">
-                   自2022年以来，我的研究成果已发表17篇论文，其中包括7篇以第一作者或共同第一作者身份发表在《Nature Communications》、《Advanced Science》、《Briefings in Bioinformatics》和《Bioinformatics》等国际顶尖期刊上的文章。这些论文累计被引用超过170次，h指数为7，i10指数为5。我曾担任30个以上国际期刊和会议的同行评审员，迄今已完成超过50次同行评审工作。
-                </p>
+                <h2 data-en="About" data-zh="关于我">About</h2>
+                <div class="lang-en">
+                    <p>I am a Ph.D. student in Biomedical Informatics at the University of Florida, advised by Prof. <a href="https://scholar.google.com/citations?user=wIYviKIAAAAJ&amp;hl=en" class="inline-link" target="_blank" rel="noopener">Qianqian Song</a>. My research centers on <strong>AI for Science</strong> — building biomedical foundation models, large language models, and agent / RAG-based systems for drug discovery, single-cell analysis, electronic health records, and medical imaging.</p>
+                    <p>Before joining UF, I received my B.S. in Internet of Things Engineering from Zhejiang Wanli University (2021), advised by Prof. <a href="https://scholar.google.com/citations?user=i4CxYLwAAAAJ&amp;hl=en" class="inline-link" target="_blank" rel="noopener">Jiong Shi</a>, and my M.S. in Computer Science from Zhejiang Normal University (2024) under Prof. <a href="https://scholar.google.com/citations?user=KO3MIkQAAAAJ&amp;hl=en" class="inline-link" target="_blank" rel="noopener">Jia Zhu</a>, where — as a member of the Zhejiang Key Laboratory of Intelligent Education Technology and Application — I was also guided by Prof. <a href="https://scholar.google.com/citations?user=C3TSoowAAAAJ&amp;hl=en" class="inline-link" target="_blank" rel="noopener">Changqin Huang</a> and Prof. <a href="https://scholar.google.com/citations?user=Z7yEoOQAAAAJ&amp;hl=en" class="inline-link" target="_blank" rel="noopener">Ming Li</a>. In summer 2023 I visited Prof. <a href="https://scholar.google.com/citations?user=GAi23ssAAAAJ&amp;hl=en" class="inline-link" target="_blank" rel="noopener">Daniel E. Acuna</a>'s lab in the Department of Computer Science at CU Boulder.</p>
+                    <p>Since 2022 I have (co-)authored 17 papers — including 7 first / co-first-author works — in venues such as <em>Nature Communications</em>, <em>Advanced Science</em>, <em>Briefings in Bioinformatics</em>, and <em>Bioinformatics</em>, and I hold one China patent. I serve as a reviewer for 30+ international journals and conferences (e.g., <em>Medical Image Analysis</em>, <em>Genome Biology</em>, <em>npj Precision Oncology</em>, <em>Neural Networks</em>) and as a Program Committee member for ICIBM 2024–2026.</p>
+                </div>
+                <div class="lang-zh" style="display:none;">
+                    <p>我是佛罗里达大学生物医学信息学专业的博士研究生，导师为 <a href="https://scholar.google.com/citations?user=wIYviKIAAAAJ&amp;hl=zh-CN" class="inline-link" target="_blank" rel="noopener">宋乾乾</a> 教授。我的研究聚焦于 <strong>AI for Science</strong>——构建面向药物发现、单细胞分析、电子健康记录与医学影像的生物医学基础模型、大语言模型及智能体 / RAG 系统。</p>
+                    <p>在加入佛罗里达大学之前，我于 2021 年获浙江万里学院物联网工程学士学位，导师为 <a href="https://scholar.google.com/citations?user=i4CxYLwAAAAJ&amp;hl=zh-CN" class="inline-link" target="_blank" rel="noopener">施炯</a> 教授；并于 2024 年获浙江师范大学计算机科学硕士学位，导师为 <a href="https://scholar.google.com/citations?user=KO3MIkQAAAAJ&amp;hl=zh-CN" class="inline-link" target="_blank" rel="noopener">朱佳</a> 教授。在校期间，作为浙江省智能教育技术与应用重点实验室成员，我还得到 <a href="https://scholar.google.com/citations?user=C3TSoowAAAAJ&amp;hl=zh-CN" class="inline-link" target="_blank" rel="noopener">黄昌勤</a> 教授与 <a href="https://scholar.google.com/citations?user=Z7yEoOQAAAAJ&amp;hl=zh-CN" class="inline-link" target="_blank" rel="noopener">李明</a> 教授的指导。2023 年夏，我访问了科罗拉多大学博尔德分校计算机系 <a href="https://scholar.google.com/citations?user=GAi23ssAAAAJ&amp;hl=zh-CN" class="inline-link" target="_blank" rel="noopener">Daniel E. Acuna</a> 教授的实验室。</p>
+                    <p>自 2022 年以来，我已发表 17 篇论文（含 7 篇第一 / 共同第一作者），发表于 <em>Nature Communications</em>、<em>Advanced Science</em>、<em>Briefings in Bioinformatics</em>、<em>Bioinformatics</em> 等期刊，并拥有一项中国专利。我担任 30 余个国际期刊与会议的审稿人（如 <em>Medical Image Analysis</em>、<em>Genome Biology</em>、<em>npj Precision Oncology</em>、<em>Neural Networks</em>），并任 ICIBM 2024–2026 程序委员会委员。</p>
+                </div>
             </div>
         </section>
 
         <section>
-            <h2 data-en="Research Interests" data-zh="研究兴趣">研究兴趣</h2>
-            <ul>
-                <li data-en="AI4Science (AI4EHR, AI4VC, AI4Drug)" data-zh="AI4Science (AI4EHR, AI4VC, AI4Drug)">AI4Science (AI4EHR, AI4VC, AI4Drug)</li>
-                <li data-en="Biomedical Foundation Models" data-zh="生物医学基础模型">生物医学基础模型</li>
-                <li data-en="Large Language Models, Agent-based Systems and RAG-based Systems" data-zh="大语言模型、基于智能体的系统和基于RAG的系统">大语言模型、基于智能体的系统和基于RAG的系统</li>
+            <h2 data-en="Research Interests" data-zh="研究兴趣">Research Interests</h2>
+            <ul class="clean">
+                <li data-en="AI4Science — AI4EHR, AI4VC, AI4Drug" data-zh="AI4Science——AI4EHR、AI4VC、AI4Drug">AI4Science — AI4EHR, AI4VC, AI4Drug</li>
+                <li data-en="Biomedical Foundation Models" data-zh="生物医学基础模型">Biomedical Foundation Models</li>
+                <li data-en="Large Language Models, Agent-based and RAG / Knowledge-Graph Systems" data-zh="大语言模型、智能体系统与 RAG / 知识图谱系统">Large Language Models, Agent-based and RAG / Knowledge-Graph Systems</li>
             </ul>
         </section>
 
         <section>
-            <h2 data-en="News" data-zh="新闻动态">新闻动态</h2>
-            <ul>
-                <li><strong>2026.2</strong> - <span data-en="I am honored to give a Paper Presentation in Health Informatics and AI Learning Series (Spring 2026), 
-              Brown Center for Biomedical Informatics (BCBI), University of Brown. Paper: 'scDrugMap: benchmarking large foundation models for drug response prediction'" data-zh="受邀在布朗大学Journal Club介绍研究工作">brown pre</span></li>
-                <li><strong>2026.2</strong> - <span data-en="I am honored to be a Guest Lecturer in GMS6804 : Translational Bioinformatics, 2026 Spring, HOBI, University of Florida.
-              Topic: 'AI-Driven Paradigm for Single-Cell Drug Resistance Prediction and Evaluation'" data-zh="受邀在GMS6804课程介绍研究工作">guest GMS6804</span></li>
-                <li><strong>2025.12</strong> - <span data-en="My first author paper 'scDrugMap: benchmarking large foundation models for drug response prediction' accepted at Nat Commun" data-zh="第一作者论文'scDrugMap'被Nature Communications接收">第一作者论文'scDrugMap'被Nature Communications接收</span></li>
-                <li><strong>2025.06</strong> - <span data-en="My first author paper 'Heclip: histology-enhanced contrastive learning for imputation of transcriptomics profiles' accepted at Bioinformatics" data-zh="第一作者论文'Heclip'被Bioinformatics接收">第一作者论文'Heclip'被Bioinformatics接收</span></li>
-                <li><strong>2024.10</strong> - <span data-en="My co-first author paper 'DrugFormer: Graph‐Enhanced Language Model to Predict Drug Sensitivity' accepted at Advanced Science" data-zh="共同第一作者论文'DrugFormer'被Advanced Science接收">共同第一作者论文'DrugFormer'被Advanced Science接收</span></li>
-                <li><strong>2024.09</strong> - <span data-en="My first author paper 'AntiFormer: graph enhanced large language model for binding affinity prediction' accepted at Briefings in Bioinformatics" data-zh="第一作者论文'AntiFormer'被Briefings in Bioinformatics接收">第一作者论文'AntiFormer'被Briefings in Bioinformatics接收</span></li>
+            <h2 data-en="News" data-zh="新闻动态">News</h2>
+            <ul class="clean news">
+                <li><span class="date">2026.02</span><span data-en="Invited talk at the Health Informatics &amp; AI Learning Series (Spring 2026), Brown Center for Biomedical Informatics (BCBI), Brown University — &quot;scDrugMap&quot;." data-zh="受邀在布朗大学生物医学信息学中心（BCBI）2026 春季 Health Informatics &amp; AI 系列讲座作报告——主题 &quot;scDrugMap&quot;。">Invited talk at the Health Informatics &amp; AI Learning Series (Spring 2026), Brown Center for Biomedical Informatics (BCBI), Brown University — "scDrugMap".</span></li>
+                <li><span class="date">2026.02</span><span data-en="Guest Lecturer for GMS6804 Translational Bioinformatics (Spring 2026), HOBI, University of Florida — &quot;AI-Driven Paradigm for Single-Cell Drug Resistance Prediction and Evaluation&quot;." data-zh="担任佛罗里达大学 GMS6804《转化生物信息学》（2026 春季）客座讲师——主题 &quot;面向单细胞药物耐药预测与评估的 AI 范式&quot;。">Guest Lecturer for GMS6804 Translational Bioinformatics (Spring 2026), HOBI, University of Florida — "AI-Driven Paradigm for Single-Cell Drug Resistance Prediction and Evaluation".</span></li>
+                <li><span class="date">2026</span><span data-en="Paper presentation at the 2026 FACCA Retreat (Florida Academic Cancer Center Alliance), Tampa, FL — &quot;scDrugMap&quot;." data-zh="在 2026 FACCA Retreat（佛罗里达学术癌症中心联盟，Tampa）作论文报告——&quot;scDrugMap&quot;。">Paper presentation at the 2026 FACCA Retreat (Florida Academic Cancer Center Alliance), Tampa, FL — "scDrugMap".</span></li>
+                <li><span class="date">2025.12</span><span data-en="First-author paper &quot;scDrugMap&quot; accepted at Nature Communications." data-zh="第一作者论文 &quot;scDrugMap&quot; 被 Nature Communications 接收。">First-author paper "scDrugMap" accepted at <em>Nature Communications</em>.</span></li>
+                <li><span class="date">2025.06</span><span data-en="First-author paper &quot;HECLIP&quot; accepted at Bioinformatics." data-zh="第一作者论文 &quot;HECLIP&quot; 被 Bioinformatics 接收。">First-author paper "HECLIP" accepted at <em>Bioinformatics</em>.</span></li>
+                <li><span class="date">2024.10</span><span data-en="Co-first-author paper &quot;DrugFormer&quot; accepted at Advanced Science." data-zh="共同第一作者论文 &quot;DrugFormer&quot; 被 Advanced Science 接收。">Co-first-author paper "DrugFormer" accepted at <em>Advanced Science</em>.</span></li>
+                <li><span class="date">2024.09</span><span data-en="First-author paper &quot;AntiFormer&quot; accepted at Briefings in Bioinformatics." data-zh="第一作者论文 &quot;AntiFormer&quot; 被 Briefings in Bioinformatics 接收。">First-author paper "AntiFormer" accepted at <em>Briefings in Bioinformatics</em>.</span></li>
             </ul>
         </section>
 
-        <section id="publications">
-            <h2 data-en="Selected Publications" data-zh="代表性论文">代表性论文</h2>
-            
-            <div class="publication">
-                <div class="pub-title">scDrugMap: Benchmarking Large Foundation Models for Drug Response Prediction</div>
-                <div class="pub-authors">Q Wang, Y Pan, M Zhou, Z Tang, Y Wang, G Wang, Q Song</div>
-                <div class="pub-venue">Nature Communications, 2025</div>
-                <div class="pub-links">
-                    <a href="#">[PDF]</a>
-                    <a href="#">[Code]</a>
-                    <a href="#">[Poster]</a>
+        <section>
+            <h2 data-en="Selected Publications" data-zh="代表性论文">Selected Publications</h2>
+
+            <div class="pub">
+                <div class="pub-cover"><img src="covers/scdrugmap.jpg" alt="scDrugMap paper cover"></div>
+                <div class="pub-body">
+                    <span class="pub-tag" data-en="First author · Nature Communications" data-zh="第一作者 · Nature Communications">First author · Nature Communications</span>
+                    <div class="pub-title">scDrugMap: Benchmarking Large Foundation Models for Drug Response Prediction</div>
+                    <div class="pub-authors"><strong>Qing Wang</strong>, Yining Pan, Minghao Zhou, Zijia Tang, Yanfei Wang, Guangyu Wang, Qianqian Song</div>
+                    <div class="pub-venue">Nature Communications, 2025</div>
+                    <div class="pub-links">
+                        <a href="papers/scDrugMap%20benchmarking%20large%20foundation%20models%20for%20drug%20response%20prediction.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://www.nature.com/articles/s41467-025-67481-2" target="_blank" rel="noopener">DOI</a>
+                        <a href="https://github.com/QSong-github/scDrugMap" target="_blank" rel="noopener">Code</a>
+                        <a href="https://scdrugmap.com" target="_blank" rel="noopener">Web</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="publication">
-                <div class="pub-title">AntiFormer: graph enhanced large language model for binding affinity prediction</div>
-                <div class="pub-authors">Q Wang, Y Feng, Y Wang, B Li, J Wen, X Zhou, Q Song</div>
-                <div class="pub-venue">Briefings in Bioinformatics, 2024</div>
-                <div class="pub-links">
-                    <a href="#">[PDF]</a>
-                    <a href="#">[Code]</a>
+            <div class="pub">
+                <div class="pub-cover"><img src="covers/drugformer.jpg" alt="DrugFormer paper cover"></div>
+                <div class="pub-body">
+                    <span class="pub-tag" data-en="Co-first author · Advanced Science" data-zh="共同第一作者 · Advanced Science">Co-first author · Advanced Science</span>
+                    <div class="pub-title">DrugFormer: Graph-Enhanced Language Model to Predict Drug Sensitivity</div>
+                    <div class="pub-authors">Xiaona Liu, <strong>Qing Wang</strong>, Minghao Zhou, Yanfei Wang, Xuefeng Wang, Xiaobo Zhou, Qianqian Song</div>
+                    <div class="pub-venue">Advanced Science, 2024</div>
+                    <div class="pub-links">
+                        <a href="papers/DrugFormer%20Graph-Enhanced%20Language%20Model%20to%20Predict%20Drug%20Sensitivity.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://doi.org/10.1002/advs.202405861" target="_blank" rel="noopener">DOI</a>
+                        <a href="https://github.com/QSong-github/DrugFormer" target="_blank" rel="noopener">Code</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="publication">
-                <div class="pub-title">Heclip: histology-enhanced contrastive learning for imputation of transcriptomics profiles</div>
-                <div class="pub-authors">Q Wang, W Chen, J Su, G Wang, Q Song</div>
-                <div class="pub-venue">Bioinformatics, 2025</div>
-                <div class="pub-links">
-                    <a href="#">[PDF]</a>
+            <div class="pub">
+                <div class="pub-cover"><img src="covers/antiformer.jpg" alt="AntiFormer paper cover"></div>
+                <div class="pub-body">
+                    <span class="pub-tag" data-en="First author · Briefings in Bioinformatics" data-zh="第一作者 · Briefings in Bioinformatics">First author · Briefings in Bioinformatics</span>
+                    <div class="pub-title">AntiFormer: Graph-Enhanced Large Language Model for Binding Affinity Prediction</div>
+                    <div class="pub-authors"><strong>Qing Wang</strong>, Yuzhou Feng, Yanfei Wang, Bo Li, Jianguo Wen, Xiaobo Zhou, Qianqian Song</div>
+                    <div class="pub-venue">Briefings in Bioinformatics, 2024</div>
+                    <div class="pub-links">
+                        <a href="papers/AntiFormer%20graph%20enhanced%20large%20language%20model%20for%20binding%20affinity%20prediction.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://doi.org/10.1093/bib/bbae403" target="_blank" rel="noopener">DOI</a>
+                        <a href="https://github.com/QSong-github/AntiFormer" target="_blank" rel="noopener">Code</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="publication">
-                <div class="pub-title">DrugFormer: Graph‐Enhanced Language Model to Predict Drug Sensitivity</div>
-                <div class="pub-authors">X Liu, Q Wang, M Zhou, Y Wang, X Wang, X Zhou, Q Song</div>
-                <div class="pub-venue">Advanced Science, 2024</div>
-                <div class="pub-links">
-                    <a href="#">[PDF]</a>
+            <div class="pub">
+                <div class="pub-cover"><img src="covers/heclip.jpg" alt="HECLIP paper cover"></div>
+                <div class="pub-body">
+                    <span class="pub-tag" data-en="First author · Bioinformatics" data-zh="第一作者 · Bioinformatics">First author · Bioinformatics</span>
+                    <div class="pub-title">HECLIP: Histology-Enhanced Contrastive Learning for Imputation of Transcriptomics Profiles</div>
+                    <div class="pub-authors"><strong>Qing Wang</strong>, Wen-jie Chen, Jing Su, Guangyu Wang, Qianqian Song</div>
+                    <div class="pub-venue">Bioinformatics, 2025</div>
+                    <div class="pub-links">
+                        <a href="papers/HECLIP%20histology-enhanced%20contrastive%20learning%20for%20imputation%20of%20transcriptomics%20profiles.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://doi.org/10.1093/bioinformatics/btaf363" target="_blank" rel="noopener">DOI</a>
+                        <a href="https://github.com/QSong-github/HECLIP" target="_blank" rel="noopener">Code</a>
+                    </div>
                 </div>
+            </div>
+
+            <p><a class="see-all" href="publications.html" data-en="See all publications →" data-zh="查看全部论文 →">See all publications →</a></p>
+        </section>
+
+        <section>
+            <h2 data-en="Education" data-zh="教育背景">Education</h2>
+            <div class="item">
+                <div class="item-title">University of Florida</div>
+                <div class="item-sub" data-en="Ph.D. in Biomedical Informatics (Medical Sciences) · GPA 3.51/4" data-zh="生物医学信息学（医学科学）博士 · GPA 3.51/4">Ph.D. in Biomedical Informatics (Medical Sciences) · GPA 3.51/4</div>
+                <div class="item-date" data-en="Aug 2025 – Present" data-zh="2025 年 8 月 – 至今">Aug 2025 – Present</div>
+            </div>
+            <div class="item">
+                <div class="item-title">University of Florida</div>
+                <div class="item-sub" data-en="M.S. program in Medical Sciences (transferred to Ph.D.)" data-zh="医学科学硕士项目（后转入博士）">M.S. program in Medical Sciences (transferred to Ph.D.)</div>
+                <div class="item-date" data-en="Aug 2024 – May 2025" data-zh="2024 年 8 月 – 2025 年 5 月">Aug 2024 – May 2025</div>
+            </div>
+            <div class="item">
+                <div class="item-title">University of Colorado Boulder</div>
+                <div class="item-sub" data-en="Visiting Student, Department of Computer Science" data-zh="计算机科学系访问学生">Visiting Student, Department of Computer Science</div>
+                <div class="item-date" data-en="Jun 2023 – Sep 2023" data-zh="2023 年 6 月 – 2023 年 9 月">Jun 2023 – Sep 2023</div>
+            </div>
+            <div class="item">
+                <div class="item-title">Zhejiang Normal University</div>
+                <div class="item-sub" data-en="M.S. in Computer Science · GPA 3.79/4 (WES)" data-zh="计算机科学硕士 · GPA 3.79/4（WES 认证）">M.S. in Computer Science · GPA 3.79/4 (WES)</div>
+                <div class="item-date" data-en="Sep 2021 – Jun 2024" data-zh="2021 年 9 月 – 2024 年 6 月">Sep 2021 – Jun 2024</div>
+            </div>
+            <div class="item">
+                <div class="item-title">Zhejiang Wanli University</div>
+                <div class="item-sub" data-en="B.S. in Internet of Things Engineering · GPA 3.31/4 (WES)" data-zh="物联网工程学士 · GPA 3.31/4（WES 认证）">B.S. in Internet of Things Engineering · GPA 3.31/4 (WES)</div>
+                <div class="item-date" data-en="Sep 2017 – Jun 2021" data-zh="2017 年 9 月 – 2021 年 6 月">Sep 2017 – Jun 2021</div>
             </div>
         </section>
 
         <section>
-            <h2 data-en="Education" data-zh="教育背景">教育背景</h2>
-            
-            <div class="education-item">
-                <div class="item-title" data-en="University of Florida" data-zh="佛罗里达大学">佛罗里达大学</div>
-                <div class="item-subtitle" data-en="PhD student in BMI" data-zh="生物医学信息学博士研究生">生物医学信息学博士研究生</div>
-                <div class="item-date" data-en="August 2025 - Present" data-zh="2025年8月 - 至今">2025年8月 - 至今</div>
+            <h2 data-en="Research Experience" data-zh="研究经历">Research Experience</h2>
+            <div class="item">
+                <div class="item-title" data-en="Graduate Research Assistant — Song Lab" data-zh="研究助理 — Song 实验室">Graduate Research Assistant — Song Lab</div>
+                <div class="item-sub" data-en="Dept. of Health Outcomes &amp; Biomedical Informatics, University of Florida" data-zh="佛罗里达大学 健康产出与生物医学信息学系">Dept. of Health Outcomes &amp; Biomedical Informatics, University of Florida</div>
+                <div class="item-date" data-en="Aug 2024 – Present" data-zh="2024 年 8 月 – 至今">Aug 2024 – Present</div>
+                <div class="item-note" data-en="AI for drug discovery, single-cell foundation models, and biomedical LLM / agent systems." data-zh="人工智能驱动的药物发现、单细胞基础模型，以及生物医学大模型 / 智能体系统。">AI for drug discovery, single-cell foundation models, and biomedical LLM / agent systems.</div>
             </div>
-
-            <div class="education-item">
-                <div class="item-title" data-en="University of Florida" data-zh="佛罗里达大学">佛罗里达大学</div>
-                <div class="item-subtitle" data-en="Master student in BMI" data-zh="生物医学信息学硕士研究生">生物医学信息学硕士研究生</div>
-                <div class="item-date" data-en="August 2024 - August 2025" data-zh="2024年8月 - 2025年8月">2024年8月 - 2025年8月</div>
-            </div>
-
-            <div class="education-item">
-                <div class="item-title" data-en="Zhejiang Normal University" data-zh="浙江师范大学">浙江师范大学</div>
-                <div class="item-subtitle" data-en="M.S. in Computer Science" data-zh="计算机科学硕士">计算机科学硕士</div>
-                <div class="item-date" data-en="September 2021 - June 2024" data-zh="2021年9月 - 2024年6月">2021年9月 - 2024年6月</div>
-            </div>
-
-            <div class="education-item">
-                <div class="item-title" data-en="Zhejiang Wanli University" data-zh="浙江万里学院">浙江万里学院</div>
-                <div class="item-subtitle" data-en="B.S. in Internet of Things" data-zh="物联网工程学士">物联网工程学士</div>
-                <div class="item-date" data-en="September 2017 - June 2021" data-zh="2017年9月 - 2021年6月">2017年9月 - 2021年6月</div>
+            <div class="item">
+                <div class="item-title" data-en="Visiting Student — Acuna Lab" data-zh="访问学生 — Acuna 实验室">Visiting Student — Acuna Lab</div>
+                <div class="item-sub" data-en="Dept. of Computer Science, University of Colorado Boulder" data-zh="科罗拉多大学博尔德分校 计算机科学系">Dept. of Computer Science, University of Colorado Boulder</div>
+                <div class="item-date" data-en="Jun 2023 – Sep 2023" data-zh="2023 年 6 月 – 2023 年 9 月">Jun 2023 – Sep 2023</div>
             </div>
         </section>
 
         <section>
-            <h2 data-en="Experience" data-zh="工作经历">工作经历</h2>
-            
-            <div class="experience-item">
-                <div class="item-title" data-en="Student Assistant at the University of Florida" data-zh="学生研究助理 - 佛罗里达大学">学生研究助理 - 佛罗里达大学</div>
-                <div class="item-subtitle" data-en="Health Outcomes and Biomedical Informatics" data-zh="健康产品与生物医学信息学系">健康产品与生物医学信息学系</div>
-                <div class="item-date" data-en="Jan 2025 - August 2025" data-zh="2025年1月 - 2025年8月">2025年1月 - 2025年8月</div>
-                <p style="margin-top: 5px; color: var(--text-secondary);" 
-                   data-en="Working on AI for drug discovery"
-                   data-zh="人工智能与药物发现研究">人工智能与药物发现研究</p>
-            </div>
-        </section>
-
-        <section>
-            <h2 data-en="Honors & Awards" data-zh="荣誉奖项">荣誉奖项</h2>
-            <ul>
-                <li data-en="Zhejiang Normal University 2023 Graduate Study Abroad Exchange Scholarship, Dec.2023" data-zh="浙江师范大学研究生出国境交流奖学金，2023年12月">浙江师范大学研究生出国境交流奖学金，2023年12月</li>
-                <li data-en="Zhejiang Normal University First-Class Postgraduate Scholarship, Dec.2023" data-zh="浙江师范大学研究生一等奖学金，2023年12月">浙江师范大学研究生一等奖学金，2023年12月</li>
-                <li data-en="Google Kaggle Featured Code Competition top 6% (59/1057, Bronze Medalist), Mar.2023" data-zh="Google Kaggle特色代码竞赛前6%（59/1057，铜牌），2023年3月">Google Kaggle特色代码竞赛前6%（59/1057，铜牌），2023年3月</li>
-                <li data-en="Google Kaggle Research Prediction Competition top 22% (201/936), Jan.2023" data-zh="Google Kaggle研究预测竞赛前22%（201/936），2023年1月">Google Kaggle研究预测竞赛前22%（201/936），2023年1月</li>
-                <li data-en="Zhejiang Normal University Best Academic Reporter Award, Dec.2022" data-zh="浙江师范大学优秀学术报告人，2022年12月">浙江师范大学优秀学术报告人，2022年12月</li>
-                <li data-en="Zhejiang Normal University Third-Class Postgraduate Scholarship, Dec.2022" data-zh="浙江师范大学研究生三等奖学金，2022年12月">浙江师范大学研究生三等奖学金，2022年12月</li>
-                <li data-en="Zhejiang Normal University Third-Class Postgraduate Scholarship, Dec.2021" data-zh="浙江师范大学研究生三等奖学金，2021年12月">浙江师范大学研究生三等奖学金，2021年12月</li>
-                <li data-en="Bachelor's degree with Honor in Zhejiang Wanli University, Jun.2021" data-zh="浙江万里学院荣誉毕业生，2021年6月">浙江万里学院荣誉毕业生，2021年6月</li>
-                <li data-en="Third Prize of the Physics Contest for College Students in Zhejiang Province, Dec.2018" data-zh="浙江省大学生物理竞赛（理论）三等奖，2018年12月">浙江省大学生物理竞赛（理论）三等奖，2018年12月</li>
+            <h2 data-en="Professional Service" data-zh="学术服务">Professional Service</h2>
+            <ul class="clean">
+                <li data-en="Reviewer for 30+ international journals, including Medical Image Analysis, Genome Biology, npj Precision Oncology, CAAI Transactions on Intelligence Technology, Briefings in Bioinformatics, Neural Networks, Expert Systems with Applications, and Applied Soft Computing." data-zh="担任 30 余个国际期刊审稿人，包括 Medical Image Analysis、Genome Biology、npj Precision Oncology、CAAI Transactions on Intelligence Technology、Briefings in Bioinformatics、Neural Networks、Expert Systems with Applications、Applied Soft Computing 等。">Reviewer for 30+ international journals, including <em>Medical Image Analysis</em>, <em>Genome Biology</em>, <em>npj Precision Oncology</em>, <em>CAAI Transactions on Intelligence Technology</em>, <em>Briefings in Bioinformatics</em>, <em>Neural Networks</em>, <em>Expert Systems with Applications</em>, and <em>Applied Soft Computing</em>.</li>
+                <li data-en="Program Committee Member &amp; Reviewer, ICIBM 2024 / 2025 / 2026; Reviewer, IEEE ICHI 2026." data-zh="ICIBM 2024 / 2025 / 2026 程序委员会委员与审稿人；IEEE ICHI 2026 审稿人。">Program Committee Member &amp; Reviewer, ICIBM 2024 / 2025 / 2026; Reviewer, IEEE ICHI 2026.</li>
+                <li data-en="Student Member of IEEE and CCF." data-zh="IEEE 与 CCF 学生会员。">Student Member of IEEE and CCF.</li>
             </ul>
         </section>
 
-        <!-- 访客地图 -->
+        <section>
+            <h2 data-en="Honors &amp; Awards" data-zh="荣誉奖项">Honors &amp; Awards</h2>
+            <ul class="clean">
+                <li data-en="ZJNU Graduate Study Abroad Exchange Scholarship, Dec 2023" data-zh="浙江师范大学研究生出国（境）交流奖学金，2023 年 12 月">ZJNU Graduate Study Abroad Exchange Scholarship, Dec 2023</li>
+                <li data-en="ZJNU First-Class Postgraduate Scholarship, Dec 2023" data-zh="浙江师范大学研究生一等奖学金，2023 年 12 月">ZJNU First-Class Postgraduate Scholarship, Dec 2023</li>
+                <li data-en="Kaggle Featured Code Competition — Top 6% (59/1057, Bronze Medal), Mar 2023" data-zh="Kaggle Featured Code 竞赛——前 6%（59/1057，铜牌），2023 年 3 月">Kaggle Featured Code Competition — Top 6% (59/1057, Bronze Medal), Mar 2023</li>
+                <li data-en="Kaggle Research Prediction Competition — Top 22% (201/936), Jan 2023" data-zh="Kaggle Research Prediction 竞赛——前 22%（201/936），2023 年 1 月">Kaggle Research Prediction Competition — Top 22% (201/936), Jan 2023</li>
+                <li data-en="ZJNU Best Academic Reporter Award, Dec 2022" data-zh="浙江师范大学优秀学术报告人，2022 年 12 月">ZJNU Best Academic Reporter Award, Dec 2022</li>
+                <li data-en="ZJNU Third-Class Postgraduate Scholarship, Dec 2022 &amp; Dec 2021" data-zh="浙江师范大学研究生三等奖学金，2022 年 12 月与 2021 年 12 月">ZJNU Third-Class Postgraduate Scholarship, Dec 2022 &amp; Dec 2021</li>
+                <li data-en="Bachelor's Degree with Honor, Zhejiang Wanli University, Jun 2021" data-zh="浙江万里学院荣誉毕业生，2021 年 6 月">Bachelor's Degree with Honor, Zhejiang Wanli University, Jun 2021</li>
+                <li data-en="Third Prize, Physics Contest for College Students in Zhejiang Province, Dec 2018" data-zh="浙江省大学生物理竞赛（理论）三等奖，2018 年 12 月">Third Prize, Physics Contest for College Students in Zhejiang Province, Dec 2018</li>
+            </ul>
+        </section>
+
         <section class="visitor-map">
-            <h3 data-en="Visitor Map" data-zh="访客地图">访客地图</h3>
+            <h3 data-en="Visitor Map" data-zh="访客地图">Visitor Map</h3>
             <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=9UnRG9FpISx2vMML9u20qkiT24zrXcti3zeD1uyHIfU&cl=ffffff&w=a"></script>
         </section>
 
-        <footer id="contact">
-            <p data-en="© 2026 Qing Wang | Last Updated: December 2024" data-zh="© 2026 汪卿 | 最后更新: 2024年12月">© 2026 汪卿 | 最后更新: 2024年12月</p>
-            <p style="margin-top: 5px; font-size: 0.85em;" data-en="Hosted on GitHub Pages" data-zh="基于 GitHub Pages 托管">基于 GitHub Pages 托管</p>
+        <footer>
+            <p data-en="© 2026 Qing Wang · Built with HTML &amp; hosted on GitHub Pages" data-zh="© 2026 汪卿 · 使用 HTML 构建，托管于 GitHub Pages">© 2026 Qing Wang · Built with HTML &amp; hosted on GitHub Pages</p>
         </footer>
     </div>
 
     <script>
-        // 主题切换
-        const themeToggle = document.getElementById('themeToggle');
+        // Theme
         const html = document.documentElement;
-        
-        // 读取保存的主题
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', savedTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
+        html.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
         });
 
-        // 语言切换
-        const langToggle = document.getElementById('langToggle');
+        // Language
         let currentLang = localStorage.getItem('lang') || 'en';
-
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('lang', lang);
-            
             document.querySelectorAll('[data-en][data-zh]').forEach(el => {
-                if (lang === 'en') {
-                    el.textContent = el.getAttribute('data-en');
-                } else {
-                    el.textContent = el.getAttribute('data-zh');
-                }
+                el.innerHTML = el.getAttribute(lang === 'en' ? 'data-en' : 'data-zh');
             });
-
-            // 处理包含HTML链接的段落
-            document.querySelectorAll('.lang-en').forEach(el => {
-                el.style.display = lang === 'en' ? 'block' : 'none';
-            });
-            document.querySelectorAll('.lang-zh').forEach(el => {
-                el.style.display = lang === 'zh' ? 'block' : 'none';
-            });
-
-            // 更新 HTML lang 属性
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.lang-zh').forEach(el => el.style.display = lang === 'zh' ? 'block' : 'none');
             document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
         }
-
-        // 初始化语言
         setLanguage(currentLang);
+        document.getElementById('langToggle').addEventListener('click', () => setLanguage(currentLang === 'zh' ? 'en' : 'zh'));
 
-        langToggle.addEventListener('click', () => {
-            const newLang = currentLang === 'zh' ? 'en' : 'zh';
-            setLanguage(newLang);
-        });
+        // Live Google Scholar metrics — fetched from the daily crawler output.
+        // Numbers in the HTML act as a fallback if the data is not reachable.
+        (function () {
+            const sources = [
+                'https://raw.githubusercontent.com/wq2581/wq2581.github.io/google-scholar-stats/gs_data.json',
+                'https://cdn.jsdelivr.net/gh/wq2581/wq2581.github.io@google-scholar-stats/gs_data.json'
+            ];
+            const apply = data => document.querySelectorAll('[data-metric]').forEach(el => {
+                const v = data[el.getAttribute('data-metric')];
+                if (v !== undefined && v !== null) el.textContent = v;
+            });
+            (async () => {
+                for (const url of sources) {
+                    try {
+                        const r = await fetch(url, { cache: 'no-store' });
+                        if (r.ok) { apply(await r.json()); return; }
+                    } catch (e) { /* try next source, else keep fallback */ }
+                }
+            })();
+        })();
     </script>
 </body>
 </html>

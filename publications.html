@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Qing Wang</title>
+    <meta name="description" content="Full list of publications by Qing Wang — journal articles, conference papers, and patents.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #f4f5f7; --surface: #ffffff; --text: #1f2937; --text-soft: #4b5563;
+            --muted: #6b7280; --border: #e5e7eb; --accent: #2563eb; --accent-soft: #eff4ff;
+            --heading: #111827; --rule: #1f2937; --shadow: 0 1px 3px rgba(16,24,40,.06);
+            --shadow-lg: 0 10px 25px rgba(16,24,40,.08);
+        }
+        [data-theme="dark"] {
+            --bg: #0f172a; --surface: #161e2e; --text: #e5e7eb; --text-soft: #cbd5e1;
+            --muted: #94a3b8; --border: #2a3650; --accent: #60a5fa; --accent-soft: #1c2740;
+            --heading: #f1f5f9; --rule: #cbd5e1; --shadow: 0 1px 3px rgba(0,0,0,.4);
+            --shadow-lg: 0 12px 30px rgba(0,0,0,.5);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.65; color: var(--text); background: var(--bg); font-size: 16px;
+            transition: background .3s, color .3s;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .controls { position: fixed; top: 16px; right: 16px; display: flex; gap: 8px; z-index: 1000; }
+        .control-btn {
+            background: var(--surface); border: 1px solid var(--border); padding: 7px 12px;
+            border-radius: 999px; cursor: pointer; font-size: 13px; color: var(--text);
+            box-shadow: var(--shadow); transition: all .2s;
+        }
+        .control-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .container {
+            max-width: 860px; margin: 0 auto; padding: 48px 24px 64px;
+            background: var(--surface); box-shadow: var(--shadow); transition: background .3s;
+        }
+        header { text-align: center; padding-bottom: 20px; }
+        h1 { font-size: 2.2em; font-weight: 700; color: var(--heading); margin-bottom: 6px; }
+        .subtitle { color: var(--muted); }
+        nav {
+            position: sticky; top: 0; z-index: 900; text-align: center; padding: 12px 0;
+            margin: 8px 0 36px; border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border); background: var(--surface);
+        }
+        nav a { color: var(--text-soft); margin: 0 14px; font-weight: 500; }
+        nav a:hover { color: var(--accent); text-decoration: none; }
+        nav a.active { color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+        section { margin-bottom: 40px; }
+        h2 {
+            font-size: 1.4em; font-weight: 700; color: var(--heading); margin-bottom: 6px;
+            padding-bottom: 8px; border-bottom: 2px solid var(--rule); display: inline-block;
+        }
+        .count { color: var(--muted); font-size: .85em; font-weight: 500; margin-left: 6px; }
+        ol.pub-list { list-style: none; counter-reset: pub; margin-top: 16px; }
+        ol.pub-list li {
+            position: relative; padding: 4px 0 16px 40px; margin-bottom: 12px;
+            border-bottom: 1px solid var(--border); counter-increment: pub;
+        }
+        ol.pub-list li:last-child { border-bottom: none; }
+        ol.pub-list li::before {
+            content: counter(pub); position: absolute; left: 0; top: 4px;
+            width: 26px; height: 26px; line-height: 26px; text-align: center;
+            font-size: .8em; font-weight: 700; color: var(--accent);
+            background: var(--accent-soft); border-radius: 6px;
+        }
+        .p-title { font-weight: 600; color: var(--heading); }
+        .p-authors { color: var(--text-soft); font-size: .92em; margin: 3px 0; }
+        .p-authors strong { color: var(--text); }
+        .p-venue { color: var(--muted); font-size: .9em; font-style: italic; }
+        .p-venue .if { font-style: normal; color: var(--accent); font-weight: 600; }
+        .marker {
+            display: inline-block; font-size: .68em; font-weight: 700; letter-spacing: .3px;
+            text-transform: uppercase; color: #fff; background: var(--accent);
+            padding: 1px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle;
+        }
+        .p-links { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 7px; }
+        .p-links a {
+            font-size: .8em; font-weight: 600; padding: 2px 9px; border: 1px solid var(--border);
+            border-radius: 6px; color: var(--text-soft); transition: all .2s;
+        }
+        .p-links a:hover { background: var(--accent); color: #fff; border-color: var(--accent); text-decoration: none; }
+        .note { color: var(--muted); font-size: .85em; margin-top: 14px; }
+        footer {
+            text-align: center; margin-top: 40px; padding-top: 24px;
+            border-top: 1px solid var(--border); color: var(--muted); font-size: .85em;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 32px 18px 48px; }
+            .controls { position: static; justify-content: center; margin-bottom: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="themeToggle" class="control-btn">🌓 Theme</button>
+        <button id="langToggle" class="control-btn">🌐 中/EN</button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 data-en="Publications" data-zh="论文发表">Publications</h1>
+            <p class="subtitle" data-en="First / co-first-author works are marked; PDF, DOI, and open-source code links are provided where available." data-zh="已标注第一 / 共同第一作者；并尽可能提供 PDF、DOI 与开源代码链接。">First / co-first-author works are marked; PDF, DOI, and open-source code links are provided where available.</p>
+        </header>
+
+        <nav>
+            <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+            <a href="publications.html" class="active" data-en="Publications" data-zh="论文">Publications</a>
+            <a href="resources.html" data-en="Resources" data-zh="资源">Resources</a>
+        </nav>
+
+        <section>
+            <h2 data-en="Journal Articles" data-zh="期刊论文">Journal Articles</h2><span class="count">13</span>
+            <ol class="pub-list">
+                <li>
+                    <div class="p-title">PhenoProfiler: Advancing Phenotypic Learning for Image-based Drug Discovery</div>
+                    <div class="p-authors">Bo Li, Bob Zhang, Chengyang Zhang, Minghao Zhou, Weiliang Huang, Shihang Wang, <strong>Qing Wang</strong>, Mengran Li, Yong Zhang, Qianqian Song</div>
+                    <div class="p-venue">Nature Communications, 2025 · <span class="if">JCR-Q1, IF 15.7</span></div>
+                    <div class="p-links">
+                        <a href="papers/PhenoProfiler%20advancing%20phenotypic%20learning%20for%20image-based%20drug%20discovery.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://github.com/QSong-github/PhenoProfiler" target="_blank" rel="noopener">Code</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">scDrugMap: Benchmarking Large Foundation Models for Drug Response Prediction<span class="marker" data-en="First author" data-zh="第一作者">First author</span></div>
+                    <div class="p-authors"><strong>Qing Wang</strong>, Yining Pan, Minghao Zhou, Zijia Tang, Yanfei Wang, Guangyu Wang, Qianqian Song</div>
+                    <div class="p-venue">Nature Communications, 2025 · <span class="if">JCR-Q1, IF 15.7</span></div>
+                    <div class="p-links">
+                        <a href="papers/scDrugMap%20benchmarking%20large%20foundation%20models%20for%20drug%20response%20prediction.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://www.nature.com/articles/s41467-025-67481-2" target="_blank" rel="noopener">DOI</a>
+                        <a href="https://github.com/QSong-github/scDrugMap" target="_blank" rel="noopener">Code</a>
+                        <a href="https://scdrugmap.com" target="_blank" rel="noopener">Web</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">KE-LPG: Toward Semantic Refinement for Lesson Plan Generation</div>
+                    <div class="p-authors">Hanghui Guo, Jia Zhu, Changfan Pan, <strong>Qing Wang</strong>, Cong Zhou, Chaojun Meng</div>
+                    <div class="p-venue">Arabian Journal for Science and Engineering, 2025 · <span class="if">JCR-Q2, IF 2.9</span></div>
+                    <div class="p-links">
+                        <a href="papers/KE-LPG%20Toward%20Semantic%20Refinement%20for%20Lesson%20Plan%20Generation.pdf" target="_blank" rel="noopener">PDF</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">Integration of Genetic and Imaging Data for Alzheimer's Disease Diagnosis and Interpretation</div>
+                    <div class="p-authors">Yanfei Wang, <strong>Qing Wang</strong>, Minghao Zhou, Jialu Liang, Lei You, Breton Asken, Xiaobo Zhou, Qianqian Song</div>
+                    <div class="p-venue">Advanced Science, 2025 · <span class="if">JCR-Q1, IF 14.1</span></div>
+                    <div class="p-links">
+                        <a href="papers/Integration%20of%20Genetic%20and%20Imaging%20Data%20for%20Alzheimer%27s%20Disease%20Diagnosis%20and%20Interpretation.pdf" target="_blank" rel="noopener">PDF</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">HECLIP: Histology-Enhanced Contrastive Learning for Imputation of Transcriptomics Profiles<span class="marker" data-en="First author" data-zh="第一作者">First author</span></div>
+                    <div class="p-authors"><strong>Qing Wang</strong>, Wen-jie Chen, Jing Su, Guangyu Wang, Qianqian Song</div>
+                    <div class="p-venue">Bioinformatics, 2025 · <span class="if">JCR-Q1, IF 5.4</span></div>
+                    <div class="p-links">
+                        <a href="papers/HECLIP%20histology-enhanced%20contrastive%20learning%20for%20imputation%20of%20transcriptomics%20profiles.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://doi.org/10.1093/bioinformatics/btaf363" target="_blank" rel="noopener">DOI</a>
+                        <a href="https://github.com/QSong-github/HECLIP" target="_blank" rel="noopener">Code</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">Heterogeneous Collaborative Filtering Contrastive Learning for Social Recommendation</div>
+                    <div class="p-authors">Chaojun Meng, Changfan Pan, Hongji Shu, <strong>Qing Wang</strong>, Hanghui Guo, Jia Zhu</div>
+                    <div class="p-venue">Applied Soft Computing, 2025 · <span class="if">JCR-Q1, IF 6.6</span></div>
+                    <div class="p-links">
+                        <a href="papers/Heterogeneous%20collaborative%20filtering%20contrastive%20learning%20for%20social%20recommendation.pdf" target="_blank" rel="noopener">PDF</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">Gene Expression Prediction from Histology Images via Hypergraph Neural Networks</div>
+                    <div class="p-authors">Bo Li, Yong Zhang, <strong>Qing Wang</strong>, Chengyang Zhang, Mengran Li, Guangyu Wang, Qianqian Song</div>
+                    <div class="p-venue">Briefings in Bioinformatics, 2024 · <span class="if">JCR-Q1, IF 7.7</span></div>
+                    <div class="p-links">
+                        <a href="papers/Gene%20expression%20prediction%20from%20histology%20images%20via%20hypergraph%20neural%20networks.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://github.com/QSong-github/HGGEP" target="_blank" rel="noopener">Code</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">DrugFormer: Graph-Enhanced Language Model to Predict Drug Sensitivity<span class="marker" data-en="Co-first author" data-zh="共同第一作者">Co-first author</span></div>
+                    <div class="p-authors">Xiaona Liu, <strong>Qing Wang</strong>, Minghao Zhou, Yanfei Wang, Xuefeng Wang, Xiaobo Zhou, Qianqian Song</div>
+                    <div class="p-venue">Advanced Science, 2024 · <span class="if">JCR-Q1, IF 14.1</span></div>
+                    <div class="p-links">
+                        <a href="papers/DrugFormer%20Graph-Enhanced%20Language%20Model%20to%20Predict%20Drug%20Sensitivity.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://doi.org/10.1002/advs.202405861" target="_blank" rel="noopener">DOI</a>
+                        <a href="https://github.com/QSong-github/DrugFormer" target="_blank" rel="noopener">Code</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">AntiFormer: Graph-Enhanced Large Language Model for Binding Affinity Prediction<span class="marker" data-en="First author" data-zh="第一作者">First author</span></div>
+                    <div class="p-authors"><strong>Qing Wang</strong>, Yuzhou Feng, Yanfei Wang, Bo Li, Jianguo Wen, Xiaobo Zhou, Qianqian Song</div>
+                    <div class="p-venue">Briefings in Bioinformatics, 2024 · <span class="if">JCR-Q1, IF 7.7</span></div>
+                    <div class="p-links">
+                        <a href="papers/AntiFormer%20graph%20enhanced%20large%20language%20model%20for%20binding%20affinity%20prediction.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://doi.org/10.1093/bib/bbae403" target="_blank" rel="noopener">DOI</a>
+                        <a href="https://github.com/QSong-github/AntiFormer" target="_blank" rel="noopener">Code</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">Self-Supervised Hypergraph Learning for Enhanced Multimodal Representation</div>
+                    <div class="p-authors">Hongji Shu, Chaojun Meng, Pasquale De Meo, <strong>Qing Wang</strong>, Jia Zhu</div>
+                    <div class="p-venue">IEEE Access, 2024 · <span class="if">JCR-Q2, IF 3.6</span></div>
+                    <div class="p-links">
+                        <a href="papers/Self-Supervised%20Hypergraph%20Learning%20for%20Enhanced%20Multimodal%20Representation.pdf" target="_blank" rel="noopener">PDF</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">Research on the Impact of Pointing Gestures Based on Computer Vision Technology on Classroom Concentration</div>
+                    <div class="p-authors">Jianyang Shi, Zhangze Chen, Jia Zhu, Jian Zhou, <strong>Qing Wang</strong>, Xiaodong Ma</div>
+                    <div class="p-venue">Neural Computing and Applications, 2024 · <span class="if">JCR-Q1, IF 4.5</span></div>
+                    <div class="p-links">
+                        <a href="papers/Research%20on%20the%20impact%20of%20pointing%20gestures%20based%20on%20computer%20vision%20technology%20on%20classroom%20concentration.pdf" target="_blank" rel="noopener">PDF</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">GUDN: A Novel Guide Network with Label Reinforcement Strategy for Extreme Multi-label Text Classification<span class="marker" data-en="First author" data-zh="第一作者">First author</span></div>
+                    <div class="p-authors"><strong>Qing Wang</strong>, Jia Zhu, Hongji Shu, Kwame Omono Asamoah, Jianyang Shi, Cong Zhou</div>
+                    <div class="p-venue">Journal of King Saud University – Computer and Information Sciences, 2023 · <span class="if">JCR-Q1, IF 6.1</span></div>
+                    <div class="p-links">
+                        <a href="papers/GUDN%20A%20novel%20guide%20network%20with%20label%20reinforcement%20strategy%20for%20extreme%20multi-label%20text%20classification.pdf" target="_blank" rel="noopener">PDF</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">A Blockchain-Based Crowdsourcing Loan Platform for Funding Higher Education in Developing Countries</div>
+                    <div class="p-authors">Kwame Omono Asamoah, Adjei Peter Darko, Collins Opoku Antwi, Seth Larweh Kodjiku, Esther Stacy E. B. Aggrey, <strong>Qing Wang</strong>, Jia Zhu</div>
+                    <div class="p-venue">IEEE Access, 2023 · <span class="if">JCR-Q2, IF 3.6</span></div>
+                    <div class="p-links">
+                        <a href="papers/A%20Blockchain-Based%20Crowdsourcing%20Loan%20Platform%20for%20Funding%20Higher%20Education%20in%20Developing%20Countries.pdf" target="_blank" rel="noopener">PDF</a>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2 data-en="Conference Papers" data-zh="会议论文">Conference Papers</h2><span class="count">4</span>
+            <ol class="pub-list">
+                <li>
+                    <div class="p-title">Stable Attribution with Local Surrogate Model</div>
+                    <div class="p-authors">Changfan Pan, <strong>Qing Wang</strong>, Jia Zhu, Xinran Cao, Hanghui Guo, Changqin Huang</div>
+                    <div class="p-venue">CCF Conf. on Computer Supported Cooperative Work and Social Computing (ChineseCSCW), Springer, 2024</div>
+                </li>
+                <li>
+                    <div class="p-title">Dual Trustworthy Mechanism for Illness Classification with Multi-modality Data<span class="marker" data-en="First author" data-zh="第一作者">First author</span></div>
+                    <div class="p-authors"><strong>Qing Wang</strong>, Jia Zhu, Changfan Pan, Jianyang Shi, Chaojun Meng, Hanghui Guo</div>
+                    <div class="p-venue">IEEE International Conference on Data Mining Workshops (ICDMW), 2023</div>
+                    <div class="p-links">
+                        <a href="papers/Dual%20trustworthy%20mechanism%20for%20illness%20classification%20with%20multi-modality%20data.pdf" target="_blank" rel="noopener">PDF</a>
+                        <a href="https://doi.org/10.1109/ICDMW60847.2023.00051" target="_blank" rel="noopener">DOI</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">Enhancing Question Generation with Syntactic Details and Multi-Level Attention Mechanism</div>
+                    <div class="p-authors">Cong Zhou, Jia Zhu, <strong>Qing Wang</strong>, Chaojun Meng, Changfan Pan, Jianyang Shi</div>
+                    <div class="p-venue">7th Asian Conference on Artificial Intelligence Technology (ACAIT), IEEE, 2023</div>
+                    <div class="p-links">
+                        <a href="papers/Enhancing%20Question%20Generation%20with%20Syntactic%20Details%20and%20Multi-Level%20Attention%20Mechanism.pdf" target="_blank" rel="noopener">PDF</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-title">Automatic Teaching Plan Grading with Distilled Multimodal Education Knowledge<span class="marker" data-en="First author" data-zh="第一作者">First author</span></div>
+                    <div class="p-authors"><strong>Qing Wang</strong>, Hanwen Zhu, Yilong Ji, Jianyang Shi, Xiaodong Ma, Jia Zhu</div>
+                    <div class="p-venue">International Conference on Computer Science and Educational Informatization (ICCSEI), Springer, 2023</div>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2 data-en="Patents" data-zh="专利">Patents</h2><span class="count">1</span>
+            <ol class="pub-list">
+                <li>
+                    <div class="p-title">Profile Generation Method, System and Medium Based on Guide Network Text Classification</div>
+                    <div class="p-authors">Changqin Huang, <strong>Qing Wang</strong>, Jia Zhu, Hongji Shu</div>
+                    <div class="p-venue">China Patent · CN114780723B (CN202210367239.7)</div>
+                </li>
+            </ol>
+        </section>
+
+        <p class="note"><span data-en="For the most up-to-date list, see my " data-zh="最新论文列表请见我的 "></span><a href="https://scholar.google.com/citations?user=AJXeD2wAAAAJ" target="_blank" rel="noopener">Google Scholar</a><span data-en=" profile." data-zh=" 主页。"></span></p>
+
+        <footer>
+            <p data-en="© 2026 Qing Wang · Hosted on GitHub Pages" data-zh="© 2026 汪卿 · 托管于 GitHub Pages">© 2026 Qing Wang · Hosted on GitHub Pages</p>
+        </footer>
+    </div>
+
+    <script>
+        const html = document.documentElement;
+        html.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+        let currentLang = localStorage.getItem('lang') || 'en';
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.querySelectorAll('[data-en][data-zh]').forEach(el => {
+                el.innerHTML = el.getAttribute(lang === 'en' ? 'data-en' : 'data-zh');
+            });
+            document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+        }
+        setLanguage(currentLang);
+        document.getElementById('langToggle').addEventListener('click', () => setLanguage(currentLang === 'zh' ? 'en' : 'zh'));
+    </script>
+</body>
+</html>
