@@ -1,0 +1,48 @@
+name: Google Scholar Stats
+
+# Updates citation / h-index / i10-index data used by the homepage badges.
+# Output is force-pushed to the `google-scholar-stats` branch, where the
+# shields.io badges read it from `gs_data.json`.
+
+on:
+  push:
+    branches:
+      - main
+  page_build:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * *" # daily at 08:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  google-scholar-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r ./google_scholar_crawler/requirements.txt
+
+      - name: Run the crawler
+        env:
+          GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+        run: |
+          cd ./google_scholar_crawler
+          python3 main.py
+
+      - name: Deploy stats to google-scholar-stats branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./google_scholar_crawler/results
+          publish_branch: google-scholar-stats
+          force_orphan: true
