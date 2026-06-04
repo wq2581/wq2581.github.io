@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qing Wang | Biomedical Informatics</title>
     <meta name="description" content="Qing Wang — Ph.D. student in Biomedical Informatics at the University of Florida. Research on AI4Science, biomedical foundation models, and large language models.">
-    <link rel="preconnect" href="https://img.shields.io">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -92,18 +91,6 @@
             transition: all .2s;
         }
         .social a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; transform: translateY(-1px); }
-
-        .metrics { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-        .badge {
-            display: inline-flex; overflow: hidden; border-radius: 6px;
-            font-size: .8em; font-weight: 600; box-shadow: var(--shadow);
-        }
-        .badge:hover { text-decoration: none; transform: translateY(-1px); }
-        .badge .badge-k { background: #334155; color: #fff; padding: 4px 9px; }
-        .badge .badge-v { color: #fff; padding: 4px 9px; font-variant-numeric: tabular-nums; }
-        .badge.cite .badge-v { background: #2563eb; }
-        .badge.idx  .badge-v { background: #0d9488; }
-        .metrics-note { font-size: .75em; color: var(--muted); margin-top: 8px; }
 
         /* ---------- Nav ---------- */
         nav {
@@ -233,19 +220,6 @@
                 <a href="https://www.researchgate.net/profile/Qing-Wang-317" target="_blank" rel="noopener">🚪 ResearchGate</a>
                 <a href="files/CV.pdf" target="_blank" rel="noopener">📄 CV</a>
             </div>
-
-            <div class="metrics" id="scholarMetrics">
-                <a class="badge cite" href="https://scholar.google.com/citations?user=AJXeD2wAAAAJ" target="_blank" rel="noopener" title="Google Scholar citations">
-                    <span class="badge-k">Citations</span><span class="badge-v" data-metric="citedby">206</span>
-                </a>
-                <a class="badge idx" href="https://scholar.google.com/citations?user=AJXeD2wAAAAJ" target="_blank" rel="noopener" title="Google Scholar h-index">
-                    <span class="badge-k">h-index</span><span class="badge-v" data-metric="hindex">8</span>
-                </a>
-                <a class="badge idx" href="https://scholar.google.com/citations?user=AJXeD2wAAAAJ" target="_blank" rel="noopener" title="Google Scholar i10-index">
-                    <span class="badge-k">i10-index</span><span class="badge-v" data-metric="i10index">7</span>
-                </a>
-            </div>
-            <p class="metrics-note" data-en="Live from Google Scholar · updated daily" data-zh="数据来自 Google Scholar · 每日自动更新">Live from Google Scholar · updated daily</p>
         </header>
 
         <nav>
@@ -470,27 +444,6 @@
         }
         setLanguage(currentLang);
         document.getElementById('langToggle').addEventListener('click', () => setLanguage(currentLang === 'zh' ? 'en' : 'zh'));
-
-        // Live Google Scholar metrics — fetched from the daily crawler output.
-        // Numbers in the HTML act as a fallback if the data is not reachable.
-        (function () {
-            const sources = [
-                'https://raw.githubusercontent.com/wq2581/wq2581.github.io/google-scholar-stats/gs_data.json',
-                'https://cdn.jsdelivr.net/gh/wq2581/wq2581.github.io@google-scholar-stats/gs_data.json'
-            ];
-            const apply = data => document.querySelectorAll('[data-metric]').forEach(el => {
-                const v = data[el.getAttribute('data-metric')];
-                if (v !== undefined && v !== null) el.textContent = v;
-            });
-            (async () => {
-                for (const url of sources) {
-                    try {
-                        const r = await fetch(url, { cache: 'no-store' });
-                        if (r.ok) { apply(await r.json()); return; }
-                    } catch (e) { /* try next source, else keep fallback */ }
-                }
-            })();
-        })();
     </script>
 </body>
 </html>
