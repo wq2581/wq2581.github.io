@@ -590,61 +590,66 @@ footer { color: var(--muted); font-size: 12px; padding: 34px 0 44px; margin-top:
 <script id="insights-data" type="application/json">{
   "k": 5,
   "phases": 3,
+  "paper_topics": {
+    "DrugClaw and DrugAudit": 0,
+    "UniD": 0,
+    "Enhancing question generation": 4
+  },
   "summary": {
-    "zh": "研究起步于浙江师范大学的多模态 NLP 与智能教育（2023）；2024 年借助图 / 超图神经网络转向生物医学预测（病理图像→基因表达、药物敏感性、抗体结合亲和力）；2025–2026 年在佛罗里达大学形成以 AI 药物发现与单细胞 / 空间组学为核心的主线（论文数翻倍，12 篇），同时智能教育方向仍在持续产出。",
-    "en": "The research began with multimodal NLP and AI for education at Zhejiang Normal University (2023), turned to biomedical prediction with graph and hypergraph neural networks in 2024 (histology-to-gene-expression, drug sensitivity, antibody binding affinity), and since 2025 has centred on AI-driven drug discovery and single-cell / spatial omics at the University of Florida (12 papers in 2025–2026, double the earlier pace), while AI-for-education work continues alongside."
+    "zh": "研究起步于浙江师范大学的多模态 NLP 与智能教育（2023）；2024 年借助图 / 超图神经网络转向生物医学预测（病理图像→基因表达、药物敏感性、抗体结合亲和力）；2025–2026 年在佛罗里达大学形成以 AI 药物发现与单细胞组学为核心的主线（这两年的 12 篇论文中有 7 篇属于该方向），智能教育方向也一直有产出。",
+    "en": "The research began with multimodal NLP and AI for education at Zhejiang Normal University (2023), turned to biomedical prediction with graph and hypergraph neural networks in 2024 (histology-to-gene-expression, drug sensitivity, antibody binding affinity), and in 2025–2026 has centred on AI-driven drug discovery and single-cell omics at the University of Florida (7 of the 12 papers from these two years), while work on AI for education has continued."
   },
   "topic_labels": {
-    "zh": ["AI 药物发现 × 单细胞 / 空间组学", "图 / 超图与多模态表示学习", "智能教育与知识增强生成", "可解释性与疾病统计推断", "极端多标签文本分类"],
-    "en": ["AI drug discovery × single-cell / spatial omics", "Graph / hypergraph and multimodal representation learning", "AI for education and knowledge-enhanced generation", "Interpretability and statistical disease inference", "Extreme multi-label text classification"]
+    "zh": ["AI 药物发现与单细胞组学", "图 / 超图与多模态表示学习", "智能教育", "可解释性与疾病统计推断", "文本分类与问题生成"],
+    "en": ["AI drug discovery and single-cell omics", "Graph / hypergraph and multimodal representation learning", "AI for education", "Interpretability and statistical disease inference", "Text classification and question generation"]
   },
   "topic_notes": {
     "zh": [
-      "用图增强语言模型、基础模型与对比学习预测药物响应、结合亲和力和细胞表型，并构建基准（scDrugMap、MVCBench）。",
-      "方法主线：超图神经网络、自监督与对比学习，用于病理图像→基因表达、社交推荐、多模态分类与问答。",
-      "教案评分与生成、课堂专注度视觉分析、教育金融平台；2026 年延伸到知识图谱增强的 RAG。",
+      "用图增强语言模型、基础模型和对比学习预测药物响应、结合亲和力与细胞表型，构建基准（scDrugMap、MVCBench），并延伸到药物信息问答与药物–疾病知识推理（DrugClaw、UniD）。",
+      "超图神经网络、自监督与对比学习，用于病理图像→基因表达、社交推荐和多模态分类。",
+      "教案评分与生成、课堂专注度的视觉分析，以及面向高等教育的众筹贷款平台。",
       "阿尔茨海默症遗传 + 影像整合、线粒体克隆选择的层次贝叶斯推断，以及局部代理模型的稳定归因。",
-      "引导网络（GUDN）与标签强化策略，以及据此申请的画像生成专利。"
+      "引导网络（GUDN）与标签强化策略、相应的画像生成专利，以及融合句法信息的问题生成。"
     ],
     "en": [
-      "Graph-enhanced language models, foundation models and contrastive learning to predict drug response, binding affinity and cell phenotypes, plus benchmarks (scDrugMap, MVCBench).",
-      "The methods backbone: hypergraph neural networks and self-supervised / contrastive learning for histology-to-gene-expression, social recommendation, multimodal classification and question answering.",
-      "Lesson-plan grading and generation, vision-based classroom attention analysis and an education-funding platform; extended to knowledge-graph-enhanced RAG in 2026.",
+      "Graph-enhanced language models, foundation models and contrastive learning for drug response, binding affinity and cell phenotypes, with benchmarks (scDrugMap, MVCBench), extended to drug-information question answering and drug–disease reasoning (DrugClaw, UniD).",
+      "Hypergraph neural networks and self-supervised / contrastive learning for histology-to-gene-expression, social recommendation and multimodal classification.",
+      "Lesson-plan grading and generation, vision-based analysis of classroom attention, and a crowdfunding loan platform for higher education.",
       "Integrating genetics and imaging for Alzheimer’s disease, hierarchical Bayesian inference of mitochondrial clonal selection, and stable attribution with local surrogate models.",
-      "A guide network (GUDN) with a label-reinforcement strategy, and a related patent on profile generation."
+      "A guide network (GUDN) with a label-reinforcement strategy, the related profile-generation patent, and question generation with syntactic information."
     ]
   },
   "phase_titles": {
-    "zh": ["多模态 NLP 与智能教育", "转向图学习驱动的生物医学预测", "AI 药物发现与单细胞多模态"],
-    "en": ["Multimodal NLP and AI for education", "Turning to graph-learning-driven biomedical prediction", "AI drug discovery and single-cell multimodality"]
+    "zh": ["多模态 NLP 与智能教育", "转向图学习驱动的生物医学预测", "AI 药物发现与单细胞组学"],
+    "en": ["Multimodal NLP and AI for education", "Turning to graph-learning-driven biomedical prediction", "AI drug discovery and single-cell omics"]
   },
   "phase_notes": {
     "zh": [
       "以浙江师范大学为基地，与 Jia Zhu 团队合作，集中在文本分类、问题生成、教案评分等 NLP / 教育应用，也开始接触医疗多模态分类。",
       "超图、图增强成为高频新词，教育类词汇淡出；开始与 Qianqian Song（佛罗里达大学）合作，DrugFormer、AntiFormer 与病理图像预测基因表达标志着进入生物医学领域。",
-      "论文数增至 12 篇，单细胞、药物、影像、对比学习、阿尔茨海默成为新出现的关键词；与 Qianqian Song 合作 8 篇，署名以佛罗里达大学为主，教育方向保留 3 篇。"
+      "12 篇论文中 7 篇属于 AI 药物发现与单细胞组学，阿尔茨海默、影像、对比学习成为新出现的关键词；与 Qianqian Song 合作 9 篇，署名以佛罗里达大学为主，教育方向另有 2 篇。"
     ],
     "en": [
       "Based at Zhejiang Normal University and working with Jia Zhu’s group on NLP and education applications — text classification, question generation, lesson-plan grading — with first steps into medical multimodal classification.",
       "Hypergraph and graph enhancement become frequent new terms while education vocabulary fades; collaboration with Qianqian Song (University of Florida) begins, and DrugFormer, AntiFormer and histology-based gene-expression prediction mark the move into biomedicine.",
-      "Output rises to 12 papers; single-cell, drug, imaging, contrastive learning and Alzheimer’s emerge as new keywords; 8 papers with Qianqian Song, mostly under the University of Florida affiliation, while 3 education papers continue."
+      "7 of the 12 papers are on AI drug discovery and single-cell omics, with Alzheimer’s, imaging and contrastive learning emerging as new keywords; 9 papers with Qianqian Song, mostly under the University of Florida affiliation, plus 2 education papers."
     ]
   },
   "evolution_note": {
-    "zh": "研究重心从 NLP / 教育应用（2023）经图学习方法（2024）转向 AI 药物发现与单细胞组学（2025–2026）；智能教育作为第二条线一直在持续产出。",
-    "en": "The focus moved from NLP / education applications (2023) through graph-learning methods (2024) to AI drug discovery and single-cell omics (2025–2026), with AI for education persisting as a second line of work."
+    "zh": "研究重心从 NLP / 教育应用（2023）经图学习方法（2024）转向 AI 药物发现与单细胞组学（2025–2026）；智能教育作为第二条线一直有产出。",
+    "en": "The focus moved from NLP / education applications (2023) through graph-learning methods (2024) to AI drug discovery and single-cell omics (2025–2026), with AI for education continuing as a second line of work."
   },
   "collab_note": {
-    "zh": "合作分成两个圈子：以 Jia Zhu（浙江师范大学，11 篇，2023–2026）为中心的 NLP / 教育团队，以及以 Qianqian Song（佛罗里达大学，11 篇，2024–2026）为中心的生物医学 AI 团队；2024 年与两人都有合作，是两圈交汇的一年。",
-    "en": "Collaboration forms two circles: an NLP / education team around Jia Zhu (Zhejiang Normal University, 11 papers, 2023–2026) and a biomedical-AI team around Qianqian Song (University of Florida, 11 papers, 2024–2026); 2024, with papers involving both, is where the two circles meet."
+    "zh": "合作分成两个圈子：以 Jia Zhu（浙江师范大学，11 篇，2023–2026）为中心的 NLP / 教育团队，以及以 Qianqian Song（佛罗里达大学，12 篇，2024–2026）为中心的生物医学 AI 团队；2024 年与两人都有合作，是两个圈子交汇的一年。",
+    "en": "Collaboration forms two circles: an NLP / education team around Jia Zhu (Zhejiang Normal University, 11 papers, 2023–2026) and a biomedical-AI team around Qianqian Song (University of Florida, 12 papers, 2024–2026); 2024, with papers involving both, is where the two circles meet."
   },
   "inst_note": {
-    "zh": "合作者主要来自美国（28 人）、中国大陆（26 人）和澳门（13 人）；合作最多的机构是浙江师范大学（19 人）、佛罗里达大学（14 人）和澳门大学（10 人），并与德州大学休斯敦健康科学中心、Houston Methodist、康奈尔大学等机构有合作。本人单位从浙江师范大学延伸到佛罗里达大学。",
-    "en": "Co-authors come mainly from the United States (28), mainland China (26) and Macao (13); the most frequent partner institutions are Zhejiang Normal University (19 co-authors), the University of Florida (14) and the University of Macau (10), with further collaborations at UTHealth Houston, Houston Methodist and Cornell. The scholar’s own affiliation extends from Zhejiang Normal University to the University of Florida."
+    "zh": "合作者主要来自中国大陆（24 人）、美国（18 人）和澳门（9 人）；合作最多的机构是浙江师范大学（17 人）、佛罗里达大学（8 人）和澳门大学（7 人），另与德州大学休斯敦健康科学中心、北京工业大学等有合作。本人单位从浙江师范大学延伸到佛罗里达大学。",
+    "en": "Co-authors come mainly from mainland China (24), the United States (18) and Macao (9); the most frequent partner institutions are Zhejiang Normal University (17 co-authors), the University of Florida (8) and the University of Macau (7), with further collaborations at UTHealth Houston and Beijing University of Technology. The scholar’s own affiliation extends from Zhejiang Normal University to the University of Florida."
   },
   "network_note": {
-    "zh": "药物发现 / 单细胞是整个论文网络的中心，并与“图 / 超图表示学习”联系最紧密：方法研究与应用研究相互支撑。教育方向主要通过多模态与知识增强方法与其他方向相连。",
-    "en": "Drug discovery / single-cell is the centre of the paper network and is most closely tied to graph / hypergraph representation learning: the methods work and the application work support each other. The education line connects to the rest mainly through multimodal and knowledge-enhanced methods."
+    "zh": "药物发现 / 单细胞是整个论文网络的中心，并与“图 / 超图表示学习”联系最紧密：方法研究与应用研究相互支撑。教育方向与其他主题的联系较弱，相对独立。",
+    "en": "Drug discovery / single-cell is the centre of the paper network and is most closely tied to graph / hypergraph representation learning: the methods work and the application work support each other. The education line has only weak links to the other topics and stands relatively apart."
   }
 }</script>
 <script>
@@ -793,6 +798,20 @@ function verifiedInsts(a, insts) {
   return found.filter(f => !found.some(g => g !== f && affWords(g.name).length > affWords(f.name).length && nameInWords(affWords(f.name), affWords(g.name))));
 }
 
+// The name as printed in the byline. OpenAlex's author-record name can belong to a different variant or even
+// a different person (byline "Zhangze Chen" filed under "Zhuo Chen", "Jia Zhu" shown as "Jia Hu Zhu").
+function bylineName(a) {
+  const rec = (a.author && a.author.display_name) || '';
+  let n = String(a.raw_author_name || '').replace(/[\d*†‡§¶#]+/g, ' ').replace(/\s+/g, ' ').trim();
+  if (n.includes(',')) { const [sur, giv] = n.split(',').map(x => x.trim()); if (sur && giv) n = giv + ' ' + sur; }
+  if (n && n === n.toUpperCase()) n = n.toLowerCase().replace(/\b[a-z]/g, ch => ch.toUpperCase());
+  if (!n) return rec || '?';
+  // initials-only byline ("Q. Wang"): show the record's full name when it fits
+  const t = nameToks(n), r = nameToks(rec);
+  if (t.length > 1 && r.length > 1 && t[t.length - 1] === r[r.length - 1] && t.slice(0, -1).every(x => x.length === 1) && r[0][0] === t[0]) return rec;
+  return n;
+}
+
 const papers = [];
 function makePaper(s, w) {
   const src = w && w.primary_location && w.primary_location.source;
@@ -815,7 +834,7 @@ function makePaper(s, w) {
       const all = (a.institutions || []).map(i => ({ id: shortId(i.id), name: i.display_name, country: i.country_code || '', type: i.type || '' }));
       const insts = verifiedInsts(a, all);
       return {
-        name: (a.author && a.author.display_name) || a.raw_author_name || '?',
+        name: bylineName(a),
         id: a.author ? shortId(a.author.id) : null,
         insts,
         countries: insts !== all ? [...new Set(insts.map(i => i.country).filter(Boolean))] : (a.countries || [])
@@ -868,35 +887,73 @@ function instFromAff(s) {
 }
 const sidebarAff = new Map((PROF.coauthors || []).map(c => [nameKey(c.name), instFromAff(c.affiliation)]));
 
-const keyToIdCount = new Map();
-for (const p of papers) for (const a of p.authors) if (!a.isEgo && a.id) {
-  const k = nameKey(a.name); if (!keyToIdCount.has(k)) keyToIdCount.set(k, new Map()); inc(keyToIdCount.get(k), a.id);
+// ---- one node per person. OpenAlex often splits a person over several author records, so people are
+// identified by their byline names: identical names are one person; a shared OpenAlex record only joins names
+// that are compatible (same surname, one given name a prefix of the other: "J. Zhu" ~ "Jia Zhu", but not
+// "Zhangze Chen" ~ "Zhuo Chen"); abbreviated Scholar names ("Q Song") join the single full name they fit.
+function nameParts(n) {
+  const t = nameToks(n);
+  if (!t.length) return null;
+  return { sur: t[t.length - 1], giv: t.slice(0, -1).join(''), ini: t.slice(0, -1).map(x => x[0]).join('') };
 }
-const keyToId = new Map([...keyToIdCount].map(([k, m]) => [k, argmaxMap(m)]));
-const coKey = a => a.id || keyToId.get(nameKey(a.name)) || 'n:' + nameKey(a.name);
+const fits = (x, y) => x.sur === y.sur && x.giv && y.giv && (x.giv.startsWith(y.giv) || y.giv.startsWith(x.giv));
+let consortium = 0;
+const occ = [];
+for (const p of papers) {
+  if (p.authors.length > MAX_AUTH) { p.consortium = true; consortium++; continue; }
+  p.authors.forEach(a => {
+    if (a.isEgo) return;
+    const parts = nameParts(a.name) || { sur: String(a.name).toLowerCase(), giv: '', ini: '' };
+    occ.push({ a, parts, abbr: p.source === 'scholar' });   // Scholar-only bylines carry initials only
+  });
+}
+const parent = occ.map((_, i) => i);
+const find = i => parent[i] === i ? i : (parent[i] = find(parent[i]));
+const union = (i, j) => { const a = find(i), b = find(j); if (a !== b) parent[a] = b; };
+const firstByName = new Map(), byRecord = new Map();
+occ.forEach((o, i) => {
+  const key = (o.abbr ? 'abbr:' : '') + o.parts.giv + ' ' + o.parts.sur;
+  if (firstByName.has(key)) union(i, firstByName.get(key)); else firstByName.set(key, i);
+  if (o.a.id && !o.abbr) { if (!byRecord.has(o.a.id)) byRecord.set(o.a.id, []); byRecord.get(o.a.id).push(i); }
+});
+for (const list of byRecord.values()) for (let x = 0; x < list.length; x++) for (let y = x + 1; y < list.length; y++)
+  if (fits(occ[list[x]].parts, occ[list[y]].parts)) union(list[x], list[y]);
+occ.forEach((o, i) => {
+  if (!o.abbr) return;
+  const cands = new Set();
+  occ.forEach((q, j) => { if (!q.abbr && q.parts.sur === o.parts.sur && (q.parts.ini.startsWith(o.parts.giv) || q.parts.giv.startsWith(o.parts.giv))) cands.add(find(j)); });
+  if (cands.size === 1) union(i, [...cands][0]);
+});
+occ.forEach((o, i) => { o.a.ck = 'p' + find(i); });
 
+const sidebarNames = (PROF.coauthors || []).map(c => ({ name: String(c.name).replace(/\s*[(（].*?[)）]\s*/g, ' ').trim(), parts: nameParts(c.name) })).filter(x => x.parts);
 const co = new Map();
 const instMeta = new Map();
-let consortium = 0;
 for (const p of papers) {
   p.coKeys = [];
-  if (p.authors.length > MAX_AUTH) { p.consortium = true; consortium++; continue; }
+  if (p.consortium) continue;
   for (const a of p.authors) {
-    if (a.isEgo) continue;
-    const k = coKey(a);
+    if (a.isEgo || !a.ck) continue;
+    const k = a.ck;
     if (p.coKeys.includes(k)) continue;
     p.coKeys.push(k);
     let c = co.get(k);
     if (!c) { c = { key: k, names: new Map(), n: 0, papers: [], years: [], insts: new Map(), countries: new Map(), cites: 0 }; co.set(k, c); }
     c.n++; c.papers.push(p.i); c.cites += p.citations; if (p.year) c.years.push(p.year);
-    inc(c.names, a.name);
+    if (p.source !== 'scholar') inc(c.names, a.name);   // prefer full byline names over Scholar initials
+    else if (!c.abbrName) c.abbrName = a.name;
     for (const ins of a.insts) { if (!ins.name) continue; inc(c.insts, ins.name); if (!instMeta.has(ins.name)) instMeta.set(ins.name, ins); }
     const ccs = (a.countries && a.countries.length ? a.countries : a.insts.map(i => i.country)).filter(Boolean);
     for (const cc of new Set(ccs)) inc(c.countries, cc);
   }
 }
 for (const c of co.values()) {
-  c.name = argmaxMap(c.names) || c.key;
+  // most frequent byline name (longer wins ties); a matching name from the Scholar profile's co-author list wins
+  const ranked = [...c.names].sort((x, y) => y[1] - x[1] || y[0].length - x[0].length);
+  c.name = ranked.length ? ranked[0][0] : (c.abbrName || c.key);
+  const cp = nameParts(c.name);
+  const sb = cp && sidebarNames.find(s => s.parts.sur === cp.sur && s.parts.giv === cp.giv);
+  if (sb) c.name = sb.name;
   c.inst = argmaxMap(c.insts) || '';
   c.instSrc = c.inst ? 'openalex' : '';
   if (!c.inst && sidebarAff.has(nameKey(c.name))) { c.inst = sidebarAff.get(nameKey(c.name)); c.instSrc = 'scholar'; }
@@ -917,7 +974,7 @@ for (const p of papers) {
   if (p.consortium) continue;
   p.authors.forEach(a => {
     if (a.isEgo) return;
-    const k = coKey(a);
+    const k = a.ck; if (!k) return;
     for (const ins of a.insts) {
       if (!ins.name) continue;
       let g = instAgg.get(ins.name);
@@ -1119,6 +1176,11 @@ function computeTopics(k) {
   const remap = new Map(order.map((c, r) => [c, r]));
   for (let i = 0; i < N; i++) if (paperTopic[i] >= 0) paperTopic[i] = remap.get(paperTopic[i]);
   K = order.length;
+  // reviewed corrections from insights.json: {"<title or its beginning>": topicId} moves clearly misplaced papers
+  if (INS.k === K && INS.paper_topics) {
+    const fixes = Object.entries(INS.paper_topics).map(([t, c]) => [normTitle(t), +c]).filter(([t, c]) => t && c >= 0 && c < K);
+    for (const p of papers) { const nt = normTitle(p.title); const f = fixes.find(([t]) => nt.startsWith(t)); if (f && vecs[p.i].idx.length) paperTopic[p.i] = f[1]; }
+  }
   const insLabels = tr(INS.topic_labels), insNotes = tr(INS.topic_notes);
   const useIns = INS.k === K && Array.isArray(insLabels);
   const usedOA = new Set();
@@ -1589,9 +1651,9 @@ function renderFig2() {
   renderCo(); renderCoTop(); renderCoNew();
   setNote('note2', tr(INS.collab_note));
   const cons = consortium ? L('作者超过 ' + MAX_AUTH + ' 人的 ' + consortium + ' 篇大合作论文未计入。', consortium + ' consortium papers with more than ' + MAX_AUTH + ' authors are excluded. ') : '';
-  $('#leg2').innerHTML = L('<b>Fig. 2 | 以本人为中心的合作网络。</b><b>a</b>，合作者网络，显示合作次数最多的 ' + coShown + ' 位（共 ' + co.size + ' 位）；节点面积随合作论文数增加，颜色表示' + coModeText +
+  $('#leg2').innerHTML = L('<b>Fig. 2 | 以本人为中心的合作网络。</b><b>a</b>，合作者网络，' + (coShown === co.size ? '显示全部 ' + co.size + ' 位合作者' : '显示合作次数最多的 ' + coShown + ' 位（共 ' + co.size + ' 位）') + '；节点面积随合作论文数增加，颜色表示' + coModeText +
       '，连线表示共同署名，深色大节点为本人；可拖动节点调整位置、滚轮缩放、拖动空白处平移，点击节点查看详情。<b>b</b>，合作论文数最多的 15 位合作者，右侧为合作年份，颜色同 a。<b>c</b>，每年首次合作的新合作者与此前已合作过的延续合作者人数。' + cons,
-    '<b>Fig. 2 | Ego-centred collaboration network.</b> <b>a</b>, Co-author network showing the ' + coShown + ' most frequent of ' + co.size + ' co-authors; node area scales with the number of joint papers, colour encodes ' + coModeText +
+    '<b>Fig. 2 | Ego-centred collaboration network.</b> <b>a</b>, Co-author network showing ' + (coShown === co.size ? 'all ' + co.size + ' co-authors' : 'the ' + coShown + ' most frequent of ' + co.size + ' co-authors') + '; node area scales with the number of joint papers, colour encodes ' + coModeText +
       ', edges denote co-authorship and the large dark node is the scholar; drag nodes to rearrange, scroll to zoom, drag the background to pan and click a node for details. <b>b</b>, The 15 most frequent co-authors, with the years of collaboration on the right; colours as in a. <b>c</b>, Co-authors per year who collaborated for the first time (new) or had collaborated before (returning). ' + cons);
 }
 
@@ -1889,7 +1951,7 @@ function exportAnalysis() {
     name: egoName, affiliation: PROF.affiliation || '', n_papers: N, matched_openalex: papers.filter(p => p.source === 'both').length,
     k: K, k_candidates: kCands.map(k => ({ k, silhouette: +kRuns.get(k).sil.toFixed(3) })), phases_count: phases.length,
     topics: topics.map(t => ({ id: t.id, auto_label: t.auto, openalex_topic: t.oaTop, n: t.n, years: [t.y0, t.y1], terms: t.terms,
-      titles: papers.filter(p => paperTopic[p.i] === t.id).sort((a, b) => b.citations - a.citations).slice(0, 6).map(p => (p.year || '') + ' ' + p.title) })),
+      titles: papers.filter(p => paperTopic[p.i] === t.id).sort((a, b) => b.citations - a.citations).slice(0, 40).map(p => (p.year || '') + ' ' + p.title) })),
     phases: phases.map(ph => ({ years: [ph.y0, ph.y1], n: ph.members.length, main_topic: ph.main ? ph.main[0] : null, topic_mix: ph.mix.map(([c, n]) => ({ topic: c, n })),
       terms: ph.terms, rising: ph.rising, fading: ph.fading, collaborators: ph.collabs, affiliations: ph.affs, representative: ph.rep.map(p => (p.year || '') + ' ' + p.title) })),
     network: net ? { center_topic: net.center, core_papers: [...net.prRank.keys()].sort((a, b) => net.prRank[a] - net.prRank[b]).slice(0, 5).map(i => papers[i].title),
