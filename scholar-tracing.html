@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholar Tracing | Qing Wang</title>
+    <meta name="description" content="Scholar Tracing — an interactive map of Qing Wang's research: collaboration network, institutions, research evolution and paper-topic network.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #f4f5f7; --surface: #ffffff; --text: #1f2937; --text-soft: #4b5563;
+            --muted: #6b7280; --border: #e5e7eb; --accent: #2563eb; --heading: #111827;
+            --rule: #1f2937; --shadow: 0 1px 3px rgba(16,24,40,.06);
+        }
+        [data-theme="dark"] {
+            --bg: #0f172a; --surface: #161e2e; --text: #e5e7eb; --text-soft: #cbd5e1;
+            --muted: #94a3b8; --border: #2a3650; --accent: #60a5fa; --heading: #f1f5f9;
+            --rule: #cbd5e1; --shadow: 0 1px 3px rgba(0,0,0,.4);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.7; color: var(--text); background: var(--bg); font-size: 16px;
+            transition: background .3s, color .3s;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .controls { position: fixed; top: 16px; right: 16px; display: flex; gap: 8px; z-index: 1000; }
+        .control-btn {
+            background: var(--surface); border: 1px solid var(--border); padding: 7px 12px;
+            border-radius: 999px; cursor: pointer; font-size: 13px; color: var(--text);
+            box-shadow: var(--shadow); transition: all .2s;
+        }
+        .control-btn:hover { border-color: var(--accent); color: var(--accent); }
+        /* wider than the other pages: the report needs room for its side-by-side figure panels */
+        .container {
+            max-width: 1240px; margin: 0 auto; padding: 48px 24px 64px;
+            background: var(--surface); box-shadow: var(--shadow); transition: background .3s;
+        }
+        header { text-align: center; padding-bottom: 20px; }
+        h1 { font-size: 2.2em; font-weight: 700; color: var(--heading); margin-bottom: 6px; }
+        .subtitle { color: var(--muted); }
+        nav {
+            position: sticky; top: 0; z-index: 900; text-align: center; padding: 12px 0;
+            margin: 8px 0 28px; border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border); background: var(--surface);
+        }
+        nav a { color: var(--text-soft); margin: 0 14px; font-weight: 500; }
+        nav a:hover { color: var(--accent); text-decoration: none; }
+        nav a.active { color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+        .intro { max-width: 760px; margin: 0 auto 24px; text-align: center; color: var(--text-soft); }
+        .actions { margin-top: 12px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .actions a {
+            border: 1px solid var(--border); border-radius: 999px; padding: 5px 14px; font-size: 14px;
+            color: var(--text); background: var(--surface);
+        }
+        .actions a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+        #report { display: block; width: 100%; height: 1200px; border: 0; background: transparent; }
+        footer {
+            text-align: center; margin-top: 40px; padding-top: 24px;
+            border-top: 1px solid var(--border); color: var(--muted); font-size: .85em;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 32px 12px 48px; }
+            .controls { position: static; justify-content: center; margin-bottom: 18px; }
+            nav a { margin: 0 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="themeToggle" class="control-btn">🌓 Theme</button>
+        <button id="langToggle" class="control-btn">🌐 中/EN</button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 data-en="Scholar Tracing" data-zh="学术画像">Scholar Tracing</h1>
+            <p class="subtitle" data-en="An interactive map of my research, traced from my Google Scholar profile." data-zh="根据我的 Google Scholar 主页生成的交互式学术画像。">An interactive map of my research, traced from my Google Scholar profile.</p>
+        </header>
+
+        <nav>
+            <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+            <a href="publications.html" data-en="Publications" data-zh="论文">Publications</a>
+            <a href="resources.html" data-en="Resources" data-zh="资源">Resources</a>
+            <a href="scholar-tracing.html" class="active" data-en="Scholar Tracing" data-zh="学术画像">Scholar Tracing</a>
+        </nav>
+
+        <section class="intro">
+            <p data-en="Who I collaborate with, where my co-authors are, how my research topics shifted over the years, and how my papers connect to each other. Drag the nodes, zoom in, and click anything for details." data-zh="我和谁合作、合作者来自哪里、研究方向这些年怎样变化，以及论文之间如何相连。可以拖动节点、缩放，点击任意元素查看详情。">Who I collaborate with, where my co-authors are, how my research topics shifted over the years, and how my papers connect to each other. Drag the nodes, zoom in, and click anything for details.</p>
+            <p class="actions">
+                <a id="fullLink" href="scholar-tracing/report_en.html" target="_blank" rel="noopener" data-en="Open full page ↗" data-zh="在新页面打开 ↗">Open full page ↗</a>
+                <a href="https://github.com/wq2581/scholar-tracing" target="_blank" rel="noopener" data-en="Make your own · GitHub ↗" data-zh="生成你自己的 · GitHub ↗">Make your own · GitHub ↗</a>
+            </p>
+        </section>
+
+        <iframe id="report" title="Scholar Tracing report"></iframe>
+
+        <footer>
+            <p><a href="index.html" data-en="← Back to Home" data-zh="← 返回首页">← Back to Home</a></p>
+            <p style="margin-top:6px;" data-en="© 2026 Qing Wang" data-zh="© 2026 汪卿">© 2026 Qing Wang</p>
+        </footer>
+    </div>
+
+    <script>
+        const html = document.documentElement;
+        const frame = document.getElementById('report');
+        html.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+        let currentLang = localStorage.getItem('lang') || 'en';
+        const reportFor = lang => lang === 'zh' ? 'scholar-tracing/report.html' : 'scholar-tracing/report_en.html';
+
+        // the report is same-origin: size the frame to its content and keep its language / theme in sync with the site
+        function fitFrame() {
+            try { const d = frame.contentDocument; if (d && d.body) frame.style.height = d.documentElement.scrollHeight + 'px'; } catch (e) { }
+        }
+        function syncFrame(reRender) {
+            const w = frame.contentWindow;
+            if (!w || typeof w.setLang !== 'function') return;
+            const root = frame.contentDocument.documentElement, theme = html.getAttribute('data-theme');
+            if (root.getAttribute('data-theme') !== theme) {
+                root.setAttribute('data-theme', theme);
+                if (reRender) { w.readTheme(); w.renderFig3(); w.runPhasesAndBelow(); }
+            }
+            if (root.lang !== (currentLang === 'zh' ? 'zh-CN' : 'en')) w.setLang(currentLang);
+            fitFrame();
+        }
+        frame.addEventListener('load', () => {
+            syncFrame(true);
+            fitFrame();
+            try { new frame.contentWindow.ResizeObserver(fitFrame).observe(frame.contentDocument.body); }
+            catch (e) { setInterval(fitFrame, 1000); }
+        });
+        frame.src = reportFor(currentLang);
+
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            syncFrame(true);
+        });
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.querySelectorAll('[data-en][data-zh]').forEach(el => {
+                el.innerHTML = el.getAttribute(lang === 'en' ? 'data-en' : 'data-zh');
+            });
+            document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+            document.getElementById('fullLink').href = reportFor(lang);
+            syncFrame(true);
+        }
+        setLanguage(currentLang);
+        document.getElementById('langToggle').addEventListener('click', () => setLanguage(currentLang === 'zh' ? 'en' : 'zh'));
+    </script>
+</body>
+</html>
