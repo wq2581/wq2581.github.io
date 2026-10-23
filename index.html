@@ -67,7 +67,7 @@
         .control-btn:hover { border-color: var(--accent); color: var(--accent); }
 
         .container {
-            max-width: 860px; margin: 0 auto; padding: 48px 24px 64px;
+            max-width: 1100px; margin: 0 auto; padding: 48px 32px 64px;
             background: var(--surface); box-shadow: var(--shadow);
             transition: background .3s;
         }
@@ -182,6 +182,18 @@
         }
         .pub-links a:hover { background: var(--accent); color: #fff; border-color: var(--accent); text-decoration: none; }
         .see-all { font-weight: 600; }
+        .pub-intro { color: var(--muted); font-size: .92em; margin: -4px 0 18px; }
+        .pub-group { margin-bottom: 26px; }
+        .pub-group-title {
+            font-size: 1em; font-weight: 700; color: var(--heading);
+            margin: 0 0 12px; padding-left: 10px; border-left: 3px solid var(--accent);
+        }
+        .pub-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+        .pub-grid .pub { margin-bottom: 0; }
+        .pub-grid .pub-cover img { width: 92px; height: 120px; }
+        @media (max-width: 900px) {
+            .pub-grid { grid-template-columns: 1fr; }
+        }
 
         /* ---------- Timeline items ---------- */
         .item { margin-bottom: 18px; padding-left: 16px; border-left: 2px solid var(--border); }
@@ -296,65 +308,188 @@
 
         <section>
             <h2 data-en="Selected Publications" data-zh="代表性论文">Selected Publications</h2>
+            <p class="pub-intro" data-en="All 13 first-author and co-first-author papers, grouped by research direction." data-zh="全部 13 篇第一作者 / 共同第一作者论文，按研究方向分类。">All 13 first-author and co-first-author papers, grouped by research direction.</p>
 
-            <div class="pub">
-                <div class="pub-cover"><img src="covers/scdrugmap.jpg" alt="scDrugMap paper cover"></div>
-                <div class="pub-body">
-                    <span class="pub-tag" data-en="First author · Nature Communications" data-zh="第一作者 · Nature Communications">First author · Nature Communications</span>
-                    <div class="pub-title">scDrugMap: Benchmarking Large Foundation Models for Drug Response Prediction</div>
-                    <div class="pub-authors"><strong>Qing Wang</strong>, Yining Pan, Minghao Zhou, Zijia Tang, Yanfei Wang, Guangyu Wang, Qianqian Song</div>
-                    <div class="pub-venue">Nature Communications, 2025</div>
-                    <div class="pub-links">
-                        <a href="papers/scDrugMap%20benchmarking%20large%20foundation%20models%20for%20drug%20response%20prediction.pdf" target="_blank" rel="noopener">PDF</a>
-                        <a href="https://www.nature.com/articles/s41467-025-67481-2" target="_blank" rel="noopener">DOI</a>
-                        <a href="https://github.com/QSong-github/scDrugMap" target="_blank" rel="noopener">Code</a>
-                        <a href="https://scdrugmap.com" target="_blank" rel="noopener">Web</a>
+            <div class="pub-group">
+                <h3 class="pub-group-title" data-en="AI4Drug — Drug Discovery &amp; Drug Response" data-zh="AI4Drug — 药物发现与药物响应">AI4Drug — Drug Discovery &amp; Drug Response</h3>
+                <div class="pub-grid">
+                <div class="pub">
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author" data-zh="第一作者">First author</span>
+                        <div class="pub-title">DrugClaw and DrugAudit: A Primary-Source-Grounded Agent and Authority-Aware Benchmark for Drug-Information Question Answering</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Bo Li, Jialu Liang, Daling Shi, Bob Zhang, Qianqian Song</div>
+                        <div class="pub-venue">Findings of the Association for Computational Linguistics: EMNLP 2026</div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2606.01434" target="_blank" rel="noopener">arXiv</a>
+                            <a href="https://github.com/QSong-github/DrugClaw" target="_blank" rel="noopener">Code</a>
+                        </div>
                     </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author" data-zh="第一作者">First author</span>
+                        <div class="pub-title">UniD³: Open Knowledge Graphs and QA Benchmarks for Drug–Disease Discovery and Reasoning</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Tianshi Liu, Minghao Zhou, Jialu Liang, Sen Guo, Jing Su, Qianqian Song</div>
+                        <div class="pub-venue">Findings of the Association for Computational Linguistics: EMNLP 2026</div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2606.01394" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-cover"><img src="covers/scdrugmap.jpg" alt="scDrugMap paper cover" loading="lazy"></div>
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author" data-zh="第一作者">First author</span>
+                        <div class="pub-title">scDrugMap: Benchmarking Large Foundation Models for Drug Response Prediction</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Yining Pan, Minghao Zhou, Zijia Tang, Yanfei Wang, Guangyu Wang, Qianqian Song</div>
+                        <div class="pub-venue">Nature Communications, 2025 · <span class="if">JCR-Q1, IF 18.1</span></div>
+                        <div class="pub-links">
+                            <a href="papers/scDrugMap%20benchmarking%20large%20foundation%20models%20for%20drug%20response%20prediction.pdf" target="_blank" rel="noopener">PDF</a>
+                            <a href="https://www.nature.com/articles/s41467-025-67481-2" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://github.com/QSong-github/scDrugMap" target="_blank" rel="noopener">Code</a>
+                            <a href="https://scdrugmap.com" target="_blank" rel="noopener">Web</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-cover"><img src="covers/drugformer.jpg" alt="DrugFormer paper cover" loading="lazy"></div>
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="Co-first author" data-zh="共同第一作者">Co-first author</span>
+                        <div class="pub-title">DrugFormer: Graph-Enhanced Language Model to Predict Drug Sensitivity</div>
+                        <div class="pub-authors">Xiaona Liu, <strong>Qing Wang</strong>, Minghao Zhou, Yanfei Wang, Xuefeng Wang, Xiaobo Zhou, Qianqian Song</div>
+                        <div class="pub-venue">Advanced Science, 2024 · <span class="if">JCR-Q1, IF 14.1</span></div>
+                        <div class="pub-links">
+                            <a href="papers/DrugFormer%20Graph-Enhanced%20Language%20Model%20to%20Predict%20Drug%20Sensitivity.pdf" target="_blank" rel="noopener">PDF</a>
+                            <a href="https://doi.org/10.1002/advs.202405861" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://github.com/QSong-github/DrugFormer" target="_blank" rel="noopener">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-cover"><img src="covers/antiformer.jpg" alt="AntiFormer paper cover" loading="lazy"></div>
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author" data-zh="第一作者">First author</span>
+                        <div class="pub-title">AntiFormer: Graph-Enhanced Large Language Model for Binding Affinity Prediction</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Yuzhou Feng, Yanfei Wang, Bo Li, Jianguo Wen, Xiaobo Zhou, Qianqian Song</div>
+                        <div class="pub-venue">Briefings in Bioinformatics, 2024 · <span class="if">JCR-Q1, IF 7.7</span></div>
+                        <div class="pub-links">
+                            <a href="papers/AntiFormer%20graph%20enhanced%20large%20language%20model%20for%20binding%20affinity%20prediction.pdf" target="_blank" rel="noopener">PDF</a>
+                            <a href="https://doi.org/10.1093/bib/bbae403" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://github.com/QSong-github/AntiFormer" target="_blank" rel="noopener">Code</a>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 
-            <div class="pub">
-                <div class="pub-cover"><img src="covers/drugformer.jpg" alt="DrugFormer paper cover"></div>
-                <div class="pub-body">
-                    <span class="pub-tag" data-en="Co-first author · Advanced Science" data-zh="共同第一作者 · Advanced Science">Co-first author · Advanced Science</span>
-                    <div class="pub-title">DrugFormer: Graph-Enhanced Language Model to Predict Drug Sensitivity</div>
-                    <div class="pub-authors">Xiaona Liu, <strong>Qing Wang</strong>, Minghao Zhou, Yanfei Wang, Xuefeng Wang, Xiaobo Zhou, Qianqian Song</div>
-                    <div class="pub-venue">Advanced Science, 2024</div>
-                    <div class="pub-links">
-                        <a href="papers/DrugFormer%20Graph-Enhanced%20Language%20Model%20to%20Predict%20Drug%20Sensitivity.pdf" target="_blank" rel="noopener">PDF</a>
-                        <a href="https://doi.org/10.1002/advs.202405861" target="_blank" rel="noopener">DOI</a>
-                        <a href="https://github.com/QSong-github/DrugFormer" target="_blank" rel="noopener">Code</a>
+            <div class="pub-group">
+                <h3 class="pub-group-title" data-en="AI4Biology — Single-Cell &amp; Virtual-Cell Modeling" data-zh="AI4Biology — 单细胞与虚拟细胞建模">AI4Biology — Single-Cell &amp; Virtual-Cell Modeling</h3>
+                <div class="pub-grid">
+                <div class="pub">
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author · In press" data-zh="第一作者 · 已接收">First author · In press</span>
+                        <div class="pub-title">CellPert: Graph-Based Variational Learning with Biological Priors for Cross-Dataset Perturbation Prediction</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Sen Guo, Jialu Liang, Weizhou Zhang, Jie Xu, Qianqian Song</div>
+                        <div class="pub-venue">Patterns (Cell Press), 2026 · <span class="if">JCR-Q1, IF 10.8</span></div>
                     </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="Co-first author · In press" data-zh="共同第一作者 · 已接收">Co-first author · In press</span>
+                        <div class="pub-title">MVCBench: A Multimodal Benchmark for Drug-induced Virtual Cell Phenotypes</div>
+                        <div class="pub-authors">Bo Li, <strong>Qing Wang</strong>, Shihang Wang, Bob Zhang, Yuzhong Peng, Pinxian Zeng, Chengliang Liu, Mengran Li, Ziyang Tang, Xiaojun Yao, Chuxia Deng, Qianqian Song</div>
+                        <div class="pub-venue">Nature Communications, 2026 · <span class="if">JCR-Q1, IF 18.1</span></div>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.64898/2026.04.22.720110" target="_blank" rel="noopener">Preprint</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="Co-first author" data-zh="共同第一作者">Co-first author</span>
+                        <div class="pub-title">scDeepAPA: A Deep Learning Framework for Single-Cell Alternative Polyadenylation Identification</div>
+                        <div class="pub-authors">Jialu Liang, <strong>Qing Wang</strong>, Sen Guo, Wei Zhang, Mingyi Xie, Qianqian Song</div>
+                        <div class="pub-venue">Briefings in Bioinformatics, 2026 · <span class="if">JCR-Q1, IF 7.7</span></div>
+                        <div class="pub-links">
+                            <a href="papers/scDeepAPA%20a%20deep%20learning%20framework%20for%20single-cell%20alternative%20polyadenylation%20identification.pdf" target="_blank" rel="noopener">PDF</a>
+                            <a href="https://doi.org/10.1093/bib/bbag339" target="_blank" rel="noopener">DOI</a>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 
-            <div class="pub">
-                <div class="pub-cover"><img src="covers/antiformer.jpg" alt="AntiFormer paper cover"></div>
-                <div class="pub-body">
-                    <span class="pub-tag" data-en="First author · Briefings in Bioinformatics" data-zh="第一作者 · Briefings in Bioinformatics">First author · Briefings in Bioinformatics</span>
-                    <div class="pub-title">AntiFormer: Graph-Enhanced Large Language Model for Binding Affinity Prediction</div>
-                    <div class="pub-authors"><strong>Qing Wang</strong>, Yuzhou Feng, Yanfei Wang, Bo Li, Jianguo Wen, Xiaobo Zhou, Qianqian Song</div>
-                    <div class="pub-venue">Briefings in Bioinformatics, 2024</div>
-                    <div class="pub-links">
-                        <a href="papers/AntiFormer%20graph%20enhanced%20large%20language%20model%20for%20binding%20affinity%20prediction.pdf" target="_blank" rel="noopener">PDF</a>
-                        <a href="https://doi.org/10.1093/bib/bbae403" target="_blank" rel="noopener">DOI</a>
-                        <a href="https://github.com/QSong-github/AntiFormer" target="_blank" rel="noopener">Code</a>
+            <div class="pub-group">
+                <h3 class="pub-group-title" data-en="AI4Pathology — Histology &amp; Spatial Transcriptomics" data-zh="AI4Pathology — 组织病理与空间转录组">AI4Pathology — Histology &amp; Spatial Transcriptomics</h3>
+                <div class="pub-grid">
+                <div class="pub">
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author · Preprint" data-zh="第一作者 · 预印本">First author · Preprint</span>
+                        <div class="pub-title">Octave: Scale-Resolved Evaluation of Spatial Gene Expression Prediction from Histology</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Sipei Gu, Qizhen Lan, Xiaoqian Jiang, Yijiang Chen, Qianqian Song</div>
+                        <div class="pub-venue">bioRxiv 2026.09.25.754484, 2026</div>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.64898/2026.09.25.754484" target="_blank" rel="noopener">bioRxiv</a>
+                        </div>
                     </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-cover"><img src="covers/heclip.jpg" alt="HECLIP paper cover" loading="lazy"></div>
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author" data-zh="第一作者">First author</span>
+                        <div class="pub-title">HECLIP: Histology-Enhanced Contrastive Learning for Imputation of Transcriptomics Profiles</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Wen-jie Chen, Jing Su, Guangyu Wang, Qianqian Song</div>
+                        <div class="pub-venue">Bioinformatics, 2025 · <span class="if">JCR-Q1, IF 5.5</span></div>
+                        <div class="pub-links">
+                            <a href="papers/HECLIP%20histology-enhanced%20contrastive%20learning%20for%20imputation%20of%20transcriptomics%20profiles.pdf" target="_blank" rel="noopener">PDF</a>
+                            <a href="https://doi.org/10.1093/bioinformatics/btaf363" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://github.com/QSong-github/HECLIP" target="_blank" rel="noopener">Code</a>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 
-            <div class="pub">
-                <div class="pub-cover"><img src="covers/heclip.jpg" alt="HECLIP paper cover"></div>
-                <div class="pub-body">
-                    <span class="pub-tag" data-en="First author · Bioinformatics" data-zh="第一作者 · Bioinformatics">First author · Bioinformatics</span>
-                    <div class="pub-title">HECLIP: Histology-Enhanced Contrastive Learning for Imputation of Transcriptomics Profiles</div>
-                    <div class="pub-authors"><strong>Qing Wang</strong>, Wen-jie Chen, Jing Su, Guangyu Wang, Qianqian Song</div>
-                    <div class="pub-venue">Bioinformatics, 2025</div>
-                    <div class="pub-links">
-                        <a href="papers/HECLIP%20histology-enhanced%20contrastive%20learning%20for%20imputation%20of%20transcriptomics%20profiles.pdf" target="_blank" rel="noopener">PDF</a>
-                        <a href="https://doi.org/10.1093/bioinformatics/btaf363" target="_blank" rel="noopener">DOI</a>
-                        <a href="https://github.com/QSong-github/HECLIP" target="_blank" rel="noopener">Code</a>
+            <div class="pub-group">
+                <h3 class="pub-group-title" data-en="AI4Health — Clinical Multimodal Data" data-zh="AI4Health — 临床多模态数据">AI4Health — Clinical Multimodal Data</h3>
+                <div class="pub-grid">
+                <div class="pub">
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author" data-zh="第一作者">First author</span>
+                        <div class="pub-title">Dual Trustworthy Mechanism for Illness Classification with Multi-modality Data</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Jia Zhu, Changfan Pan, Jianyang Shi, Chaojun Meng, Hanghui Guo</div>
+                        <div class="pub-venue">IEEE International Conference on Data Mining Workshops (ICDMW), 2023</div>
+                        <div class="pub-links">
+                            <a href="papers/Dual%20trustworthy%20mechanism%20for%20illness%20classification%20with%20multi-modality%20data.pdf" target="_blank" rel="noopener">PDF</a>
+                            <a href="https://doi.org/10.1109/ICDMW60847.2023.00051" target="_blank" rel="noopener">DOI</a>
+                        </div>
                     </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="pub-group">
+                <h3 class="pub-group-title" data-en="Earlier Work — NLP &amp; AI for Education" data-zh="早期工作 — 自然语言处理与教育人工智能">Earlier Work — NLP &amp; AI for Education</h3>
+                <div class="pub-grid">
+                <div class="pub">
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author" data-zh="第一作者">First author</span>
+                        <div class="pub-title">GUDN: A Novel Guide Network with Label Reinforcement Strategy for Extreme Multi-label Text Classification</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Jia Zhu, Hongji Shu, Kwame Omono Asamoah, Jianyang Shi, Cong Zhou</div>
+                        <div class="pub-venue">Journal of King Saud University – Computer and Information Sciences, 2023 · <span class="if">JCR-Q1, IF 6.1</span></div>
+                        <div class="pub-links">
+                            <a href="papers/GUDN%20A%20novel%20guide%20network%20with%20label%20reinforcement%20strategy%20for%20extreme%20multi-label%20text%20classification.pdf" target="_blank" rel="noopener">PDF</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub">
+                    <div class="pub-body">
+                        <span class="pub-tag" data-en="First author" data-zh="第一作者">First author</span>
+                        <div class="pub-title">Automatic Teaching Plan Grading with Distilled Multimodal Education Knowledge</div>
+                        <div class="pub-authors"><strong>Qing Wang</strong>, Hanwen Zhu, Yilong Ji, Jianyang Shi, Xiaodong Ma, Jia Zhu</div>
+                        <div class="pub-venue">International Conference on Computer Science and Educational Informatization (ICCSEI), Springer, 2023</div>
+                    </div>
+                </div>
                 </div>
             </div>
 
